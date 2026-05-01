@@ -33,6 +33,9 @@ make test_examples
 
 ```
 pulumi-dagsterplus/
+├── .github/workflows/
+│   ├── ci.yml                              # Runs on PRs and pushes to main
+│   └── release.yml                         # Triggered by version tags
 ├── provider/
 │   ├── resources.go                        # Provider configuration and token mapping
 │   ├── schema_test.go                      # Schema validity test
@@ -42,8 +45,20 @@ pulumi-dagsterplus/
 ├── examples/
 │   ├── basic/                              # Basic usage example
 │   └── examples_test.go                   # Integration tests
+├── .goreleaser.yml                         # Cross-platform release config
 └── Makefile
 ```
+
+## Releasing
+
+Releases are automated via [goreleaser](https://goreleaser.com/) and GitHub Actions. Pushing a version tag triggers the release workflow, which builds cross-platform binaries and publishes them to GitHub Releases.
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+Pulumi will then be able to auto-download the provider from GitHub Releases.
 
 ## Updating the Upstream Provider
 

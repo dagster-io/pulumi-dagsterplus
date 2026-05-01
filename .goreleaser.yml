@@ -1,0 +1,38 @@
+before:
+  hooks:
+    - make schema
+
+builds:
+  - id: pulumi-resource-dagsterplus
+    binary: pulumi-resource-dagsterplus
+    main: ./provider/cmd/pulumi-resource-dagsterplus
+    goarch:
+      - amd64
+      - arm64
+    goos:
+      - darwin
+      - linux
+      - windows
+    ignore:
+      - goos: windows
+        goarch: arm64
+    env:
+      - CGO_ENABLED=0
+
+archives:
+  - id: archive
+    name_template: "{{ .ProjectName }}-v{{ .Version }}-{{ .Os }}-{{ .Arch }}"
+    format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - none*
+
+checksum:
+  name_template: "{{ .ProjectName }}-v{{ .Version }}-checksums.txt"
+
+release:
+  github:
+    owner: dagster-io
+    name: pulumi-dagsterplus
