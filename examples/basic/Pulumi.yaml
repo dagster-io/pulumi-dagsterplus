@@ -1,0 +1,12 @@
+name: dagsterplus-basic
+runtime: yaml
+description: Basic smoke test for the dagsterplus Pulumi provider
+
+resources:
+  myTeam:
+    type: dagsterplus:index:Team
+    properties:
+      name: pulumi-test-team
+
+outputs:
+  teamName: ${myTeam.name}

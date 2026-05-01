@@ -1,0 +1,9 @@
+# Built binaries
+pulumi-resource-dagsterplus
+pulumi-tfgen-dagsterplus
+
+# Environment variables
+.env
+
+# macOS
+.DS_Store
