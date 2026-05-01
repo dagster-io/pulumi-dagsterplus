@@ -1,6 +1,9 @@
-# Built binaries
-pulumi-resource-dagsterplus
-pulumi-tfgen-dagsterplus
+# Built binaries (root level only)
+/pulumi-resource-dagsterplus
+/pulumi-tfgen-dagsterplus
+
+# tfgen artifacts
+provider/cmd/pulumi-resource-dagsterplus/Pulumi.yaml
 
 # Environment variables
 .env
