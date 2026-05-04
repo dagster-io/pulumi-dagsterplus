@@ -18,8 +18,11 @@ provider: schema
 	go build -o $(PROVIDER) ./provider/cmd/pulumi-resource-$(PROVIDER_NAME)
 
 install: provider
-	mkdir -p ~/.pulumi/plugins/resource-$(PROVIDER_NAME)-v0.0.1
-	cp $(PROVIDER) ~/.pulumi/plugins/resource-$(PROVIDER_NAME)-v0.0.1/$(PROVIDER)
+	mkdir -p ~/.pulumi/plugins/resource-$(PROVIDER_NAME)-v0.0.0
+	cp $(PROVIDER) ~/.pulumi/plugins/resource-$(PROVIDER_NAME)-v0.0.0/$(PROVIDER)
+
+sdk_python: tfgen
+	./$(TFGEN) python --out sdk/python
 
 test_provider:
 	go test -v ./provider/...

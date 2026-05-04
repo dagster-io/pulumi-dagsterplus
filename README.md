@@ -16,6 +16,14 @@ To use from TypeScript or JavaScript, install using `npm`:
 npm install @pulumi/dagsterplus
 ```
 
+### Python
+
+To use from Python, install using `pip`:
+
+```bash
+pip install pulumi_dagsterplus
+```
+
 ### Pulumi YAML
 
 No installation required. Reference the provider directly in your `Pulumi.yaml`:

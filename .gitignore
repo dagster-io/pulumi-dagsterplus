@@ -2,6 +2,9 @@
 /pulumi-resource-dagsterplus
 /pulumi-tfgen-dagsterplus
 
+# Generated SDKs
+/sdk/
+
 # tfgen artifacts
 provider/cmd/pulumi-resource-dagsterplus/Pulumi.yaml
 
@@ -17,3 +20,14 @@ bin/
 
 # macOS
 .DS_Store
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.python-version
+pyproject.toml
+uv.lock

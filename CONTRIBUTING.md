@@ -5,6 +5,7 @@
 - [Go 1.24+](https://golang.org/dl/)
 - [Pulumi CLI](https://www.pulumi.com/docs/install/)
 - [Node.js 18+](https://nodejs.org/) and npm (for TypeScript SDK)
+- [Python 3.9+](https://www.python.org/downloads/) with [uv](https://docs.astral.sh/uv/) (for Python SDK work)
 
 ## Building
 
@@ -31,6 +32,20 @@ cd sdk/nodejs && npm install && npm run build
 cd examples/basic-typescript && npm install && pulumi preview
 ```
 
+## Python SDK
+
+Generate the Python SDK from the current schema:
+
+```bash
+make sdk_python
+```
+
+This outputs to `sdk/python/`. To install it locally for testing:
+
+```bash
+uv pip install -e sdk/python
+```
+
 ## Testing
 
 ```bash
@@ -42,6 +57,8 @@ export DAGSTER_CLOUD_ORGANIZATION="your-org"
 export DAGSTER_CLOUD_API_TOKEN="your-token"
 make test_examples
 ```
+
+The `examples/basic-python/` example can be tested manually with `pulumi preview` after running `make install` and `uv pip install -e sdk/python`.
 
 ## Project Structure
 
@@ -59,6 +76,7 @@ pulumi-dagsterplus/
 ├── examples/
 │   ├── basic/                              # Basic YAML example
 │   ├── basic-typescript/                   # Basic TypeScript example
+│   ├── basic-python/                       # Basic Python example
 │   └── examples_test.go                   # Integration tests
 ├── .goreleaser.yml                         # Cross-platform release config
 └── Makefile
@@ -66,16 +84,20 @@ pulumi-dagsterplus/
 
 ## Releasing
 
-Releases are automated via [goreleaser](https://goreleaser.com/) and GitHub Actions. Pushing a version tag triggers the release workflow, which builds cross-platform binaries, publishes them to GitHub Releases, and publishes the TypeScript SDK to npm.
+Releases are automated via [goreleaser](https://goreleaser.com/) and GitHub Actions. Pushing a version tag triggers the release workflow, which:
 
-Before cutting a release, ensure `NPM_TOKEN` is configured as a GitHub Actions secret with publish access to the `@pulumi` npm scope.
+1. Builds cross-platform provider binaries and publishes them to GitHub Releases
+2. Generates the TypeScript SDK and publishes it to npm
+3. Generates the Python SDK, builds a wheel, and publishes it to PyPI
+
+Before cutting a release, ensure `NPM_TOKEN` is configured as a GitHub Actions secret with publish access to the `@pulumi` npm scope, and `PYPI_TOKEN` is configured for PyPI publishing.
 
 ```bash
 git tag v0.1.0
 git push origin v0.1.0
 ```
 
-Pulumi will then be able to auto-download the provider from GitHub Releases.
+The PyPI publish step requires a `PYPI_TOKEN` secret configured in the repository's GitHub Actions settings.
 
 ## Updating the Upstream Provider
 
@@ -87,4 +109,5 @@ When a new version of the Terraform provider is released:
    ```
 2. Run `go mod tidy`
 3. Run `make install` to regenerate the schema and rebuild
-4. Run `make test_provider && make test_examples` to verify
+4. Run `make sdk_python` to regenerate the Python SDK
+5. Run `make test_provider && make test_examples` to verify
