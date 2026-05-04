@@ -4,6 +4,7 @@
 
 - [Go 1.24+](https://golang.org/dl/)
 - [Pulumi CLI](https://www.pulumi.com/docs/install/)
+- [Python 3.9+](https://www.python.org/downloads/) with [uv](https://docs.astral.sh/uv/) (for Python SDK work)
 
 ## Building
 
@@ -17,6 +18,20 @@ make schema     # Generate schema.json and bridge-metadata.json
 make provider   # Build the provider binary
 ```
 
+## Python SDK
+
+Generate the Python SDK from the current schema:
+
+```bash
+make sdk_python
+```
+
+This outputs to `sdk/python/`. To install it locally for testing:
+
+```bash
+uv pip install -e sdk/python
+```
+
 ## Testing
 
 ```bash
@@ -28,6 +43,8 @@ export DAGSTER_CLOUD_ORGANIZATION="your-org"
 export DAGSTER_CLOUD_API_TOKEN="your-token"
 make test_examples
 ```
+
+The `examples/basic-python/` example can be tested manually with `pulumi preview` after running `make install` and `uv pip install -e sdk/python`.
 
 ## Project Structure
 
@@ -43,7 +60,8 @@ pulumi-dagsterplus/
 │       ├── pulumi-tfgen-dagsterplus/       # Schema generator binary
 │       └── pulumi-resource-dagsterplus/    # Provider runtime binary
 ├── examples/
-│   ├── basic/                              # Basic usage example
+│   ├── basic/                              # Basic YAML example
+│   ├── basic-python/                       # Basic Python example
 │   └── examples_test.go                   # Integration tests
 ├── .goreleaser.yml                         # Cross-platform release config
 └── Makefile
@@ -51,14 +69,17 @@ pulumi-dagsterplus/
 
 ## Releasing
 
-Releases are automated via [goreleaser](https://goreleaser.com/) and GitHub Actions. Pushing a version tag triggers the release workflow, which builds cross-platform binaries and publishes them to GitHub Releases.
+Releases are automated via [goreleaser](https://goreleaser.com/) and GitHub Actions. Pushing a version tag triggers the release workflow, which:
+
+1. Builds cross-platform provider binaries and publishes them to GitHub Releases
+2. Generates the Python SDK, builds a wheel, and publishes it to PyPI
 
 ```bash
 git tag v0.1.0
 git push origin v0.1.0
 ```
 
-Pulumi will then be able to auto-download the provider from GitHub Releases.
+The PyPI publish step requires a `PYPI_TOKEN` secret configured in the repository's GitHub Actions settings.
 
 ## Updating the Upstream Provider
 
@@ -70,4 +91,5 @@ When a new version of the Terraform provider is released:
    ```
 2. Run `go mod tidy`
 3. Run `make install` to regenerate the schema and rebuild
-4. Run `make test_provider && make test_examples` to verify
+4. Run `make sdk_python` to regenerate the Python SDK
+5. Run `make test_provider && make test_examples` to verify

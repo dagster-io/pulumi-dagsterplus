@@ -26,3 +26,22 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Python build tools
+        run: pip install build twine
+
+      - name: Generate Python SDK
+        run: ./pulumi-tfgen-dagsterplus python --out sdk/python
+
+      - name: Build Python wheel
+        run: cd sdk/python && python -m build
+
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: twine upload sdk/python/dist/*
