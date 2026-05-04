@@ -1,0 +1,11 @@
+{
+    "name": "dagsterplus-basic-typescript",
+    "version": "1.0.0",
+    "devDependencies": {
+        "@types/node": "^18"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.0.0",
+        "@pulumi/dagsterplus": "file:../../sdk/nodejs"
+    }
+}

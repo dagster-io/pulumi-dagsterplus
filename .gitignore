@@ -8,5 +8,12 @@ provider/cmd/pulumi-resource-dagsterplus/Pulumi.yaml
 # Environment variables
 .env
 
+# Generated SDKs
+/sdk/
+
+# Node.js
+node_modules/
+bin/
+
 # macOS
 .DS_Store

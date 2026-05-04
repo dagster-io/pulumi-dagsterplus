@@ -26,3 +26,28 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Generate TypeScript SDK
+        run: make sdk_nodejs
+
+      - name: Set SDK version
+        run: |
+          VERSION="${{ github.ref_name }}"
+          sed -i "s/\${VERSION}/${VERSION#v}/g" sdk/nodejs/package.json
+
+      - name: Build TypeScript SDK
+        working-directory: sdk/nodejs
+        run: |
+          npm install
+          npm run build
+
+      - name: Publish to npm
+        working-directory: sdk/nodejs
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

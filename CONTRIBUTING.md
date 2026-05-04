@@ -4,6 +4,7 @@
 
 - [Go 1.24+](https://golang.org/dl/)
 - [Pulumi CLI](https://www.pulumi.com/docs/install/)
+- [Node.js 18+](https://nodejs.org/) and npm (for TypeScript SDK)
 
 ## Building
 
@@ -15,6 +16,19 @@ make install
 make tfgen      # Build the schema generator
 make schema     # Generate schema.json and bridge-metadata.json
 make provider   # Build the provider binary
+```
+
+## TypeScript SDK
+
+```bash
+# Generate the TypeScript SDK
+make sdk_nodejs
+
+# Install the generated SDK locally
+cd sdk/nodejs && npm install && npm run build
+
+# Test against the example
+cd examples/basic-typescript && npm install && pulumi preview
 ```
 
 ## Testing
@@ -43,7 +57,8 @@ pulumi-dagsterplus/
 │       ├── pulumi-tfgen-dagsterplus/       # Schema generator binary
 │       └── pulumi-resource-dagsterplus/    # Provider runtime binary
 ├── examples/
-│   ├── basic/                              # Basic usage example
+│   ├── basic/                              # Basic YAML example
+│   ├── basic-typescript/                   # Basic TypeScript example
 │   └── examples_test.go                   # Integration tests
 ├── .goreleaser.yml                         # Cross-platform release config
 └── Makefile
@@ -51,7 +66,9 @@ pulumi-dagsterplus/
 
 ## Releasing
 
-Releases are automated via [goreleaser](https://goreleaser.com/) and GitHub Actions. Pushing a version tag triggers the release workflow, which builds cross-platform binaries and publishes them to GitHub Releases.
+Releases are automated via [goreleaser](https://goreleaser.com/) and GitHub Actions. Pushing a version tag triggers the release workflow, which builds cross-platform binaries, publishes them to GitHub Releases, and publishes the TypeScript SDK to npm.
+
+Before cutting a release, ensure `NPM_TOKEN` is configured as a GitHub Actions secret with publish access to the `@pulumi` npm scope.
 
 ```bash
 git tag v0.1.0

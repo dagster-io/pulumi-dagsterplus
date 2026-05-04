@@ -1,65 +1,45 @@
 # Pulumi Dagster+ Provider
 
-A [Pulumi](https://www.pulumi.com/) provider for managing [Dagster+](https://dagster.io/) (Dagster Cloud) resources — deployments, code locations, teams, users, tokens, alert policies, and more.
+The Dagster+ resource provider for Pulumi lets you manage [Dagster+](https://dagster.io/) (Dagster Cloud) resources — deployments, code locations, teams, users, tokens, alert policies, and more.
 
 This provider is built on top of the [Dagster+ Terraform provider](https://github.com/dagster-io/terraform-provider-dagsterplus) using the [Pulumi Terraform Bridge](https://github.com/pulumi/pulumi-terraform-bridge).
 
-## Configuration
+## Installing
 
-The provider requires your Dagster+ organization name and an API token. These can be set via config or environment variables.
+This package is available in the following languages and packaging formats.
+
+### TypeScript / JavaScript
+
+To use from TypeScript or JavaScript, install using `npm`:
 
 ```bash
-export DAGSTER_CLOUD_ORGANIZATION="your-org"
-export DAGSTER_CLOUD_API_TOKEN="your-token"
+npm install @pulumi/dagsterplus
 ```
 
-Or via Pulumi config:
+### Pulumi YAML
+
+No installation required. Reference the provider directly in your `Pulumi.yaml`:
+
+```yaml
+plugins:
+  providers:
+    - name: dagsterplus
+```
+
+## Configuration
+
+The provider requires your Dagster+ organization name and an API token.
 
 ```bash
 pulumi config set dagsterplus:organization "your-org"
 pulumi config set --secret dagsterplus:apiToken "your-token"
 ```
 
-Generate an API token at **Dagster+ → Account Settings → API Tokens**.
+Or via environment variables:
 
-## Usage
-
-### Pulumi YAML
-
-```yaml
-name: my-dagster-infra
-runtime: yaml
-
-resources:
-  dataEngineering:
-    type: dagsterplus:index:Team
-    properties:
-      name: data-engineering
-
-  prodDeployment:
-    type: dagsterplus:index:Deployment
-    properties:
-      name: production
-```
-
-### TypeScript
-
-```typescript
-import * as dagsterplus from "@dagster-io/pulumi-dagsterplus";
-
-const team = new dagsterplus.index.Team("data-engineering", {
-    name: "data-engineering",
-});
-```
-
-### Python
-
-```python
-import pulumi_dagsterplus as dagsterplus
-
-team = dagsterplus.index.Team("data-engineering",
-    name="data-engineering",
-)
+```bash
+export DAGSTER_CLOUD_ORGANIZATION="your-org"
+export DAGSTER_CLOUD_API_TOKEN="your-token"
 ```
 
 ## Contributing
