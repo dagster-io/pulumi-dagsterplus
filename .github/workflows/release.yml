@@ -38,6 +38,11 @@ jobs:
       - name: Generate Python SDK
         run: ./pulumi-tfgen-dagsterplus python --out sdk/python
 
+      - name: Set Python SDK version
+        run: |
+          VERSION="${{ github.ref_name }}"
+          sed -i "s/0.0.0/${VERSION#v}/g" sdk/python/pyproject.toml
+
       - name: Build Python wheel
         run: cd sdk/python && python -m build
 
