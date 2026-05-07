@@ -45,3 +45,18 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: sdk/python/dist/
+
+      - name: Generate Go SDK
+        run: ./pulumi-tfgen-dagsterplus go --out sdk/go
+
+      - name: Commit and publish Go SDK
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sdk/go/
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: generate Go SDK ${{ github.ref_name }}"
+            git push origin HEAD:main
+          fi
+          git tag "sdk/go/${{ github.ref_name }}"
+          git push origin "sdk/go/${{ github.ref_name }}"
