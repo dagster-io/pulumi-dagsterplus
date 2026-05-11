@@ -41,7 +41,7 @@ jobs:
       - name: Set Python SDK version
         run: |
           VERSION="${{ github.ref_name }}"
-          sed -i "s/0.0.0/${VERSION#v}/g" sdk/python/pyproject.toml
+          sed -i "s/0.0.0/${VERSION#v}/g" sdk/python/setup.py
 
       - name: Build Python wheel
         run: cd sdk/python && python -m build
