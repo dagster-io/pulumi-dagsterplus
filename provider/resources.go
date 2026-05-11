@@ -13,7 +13,7 @@ import (
 //go:embed cmd/pulumi-resource-dagsterplus/bridge-metadata.json
 var bridgeMetadata []byte
 
-var Version = "0.0.1"
+var Version = "0.0.0"
 
 func Provider() tfbridge.ProviderInfo {
 	info := tfbridge.ProviderInfo{

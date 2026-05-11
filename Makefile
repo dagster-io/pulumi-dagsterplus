@@ -2,7 +2,7 @@ PROVIDER_NAME := dagsterplus
 TFGEN         := pulumi-tfgen-$(PROVIDER_NAME)
 PROVIDER      := pulumi-resource-$(PROVIDER_NAME)
 SCHEMA_OUT    := provider/cmd/pulumi-resource-$(PROVIDER_NAME)
-VERSION       ?= $(shell git describe --tags --always --dirty 2>/dev/null | sed 's/^v//')
+VERSION       ?= 0.0.0
 LDFLAGS       := -X github.com/dagster-io/pulumi-dagsterplus/provider.Version=$(VERSION)
 
 .PHONY: tidy tfgen schema provider install all
