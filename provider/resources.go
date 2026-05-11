@@ -17,7 +17,7 @@ var Version = "0.0.1"
 
 func Provider() tfbridge.ProviderInfo {
 	info := tfbridge.ProviderInfo{
-		P:                 pf.ShimProvider(dagsterprovider.New("0.0.1")()),
+		P:                 pf.ShimProvider(dagsterprovider.New(Version)()),
 		Name:              "dagsterplus",
 		Version:           Version,
 		DisplayName:       "Dagster+",
@@ -27,7 +27,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:          "https://www.dagster.io",
 		Repository:        "https://github.com/dagster-io/pulumi-dagsterplus",
 		GitHubOrg:         "dagster-io",
-		PluginDownloadURL: "github://api.github.com/dagster-io",
+		PluginDownloadURL: "github://api.github.com/dagster-io/pulumi-dagsterplus",
 		UpstreamRepoPath:  "/Users/dennis/code/terraform-provider-dagster-plus",
 		MetadataInfo:      tfbridge.NewProviderMetadata(bridgeMetadata),
 	}
