@@ -51,14 +51,20 @@ jobs:
         with:
           packages-dir: sdk/python/dist/
 
-      - name: Build tfgen binary
-        run: go build -o ./pulumi-tfgen-dagsterplus ./provider/cmd/pulumi-tfgen-dagsterplus
+      - name: Build tfgen binary with version
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          go build -ldflags "-X github.com/dagster-io/pulumi-dagsterplus/provider.Version=${VERSION}" \
+            -o ./pulumi-tfgen-dagsterplus ./provider/cmd/pulumi-tfgen-dagsterplus
 
       - name: Generate Go SDK
         run: ./pulumi-tfgen-dagsterplus go --out sdk/go
 
       - name: Tidy Go SDK module
         run: cd sdk/go && go mod tidy
+
+      - name: Verify Go SDK builds
+        run: cd sdk/go && go build ./...
 
       - name: Commit and publish Go SDK
         run: |

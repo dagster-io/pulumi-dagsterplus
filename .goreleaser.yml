@@ -1,11 +1,14 @@
 before:
   hooks:
-    - make schema
+    - bash -c 'VERSION="{{.Version}}" make schema'
 
 builds:
   - id: pulumi-resource-dagsterplus
     binary: pulumi-resource-dagsterplus
     main: ./provider/cmd/pulumi-resource-dagsterplus
+    ldflags:
+      - -s -w
+      - -X github.com/dagster-io/pulumi-dagsterplus/provider.Version={{.Version}}
     goarch:
       - amd64
       - arm64
