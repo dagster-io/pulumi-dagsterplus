@@ -23,6 +23,6 @@ func TestSchemaIsValid(t *testing.T) {
 	require.False(t, diags.HasErrors(), diags.Error())
 
 	assert.Equal(t, "dagsterplus", pkg.Name)
-	assert.Len(t, pkg.Resources, 21, "expected 21 resources")
+	assert.Len(t, pkg.Resources, 33, "expected 33 resources")
 	assert.Len(t, pkg.Functions, 21, "expected 21 functions (data sources)")
 }
