@@ -118,7 +118,7 @@
             "properties": {
                 "operator": {
                     "type": "string",
-                    "description": "Comparison operator: greater*than or less*than.\n"
+                    "description": "Comparison operator. Valid values: \u003cspan pulumi-lang-nodejs=\"`greaterThan`\" pulumi-lang-dotnet=\"`GreaterThan`\" pulumi-lang-go=\"`greaterThan`\" pulumi-lang-python=\"`greater_than`\" pulumi-lang-yaml=\"`greaterThan`\" pulumi-lang-java=\"`greaterThan`\"\u003e`greaterThan`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`lessThan`\" pulumi-lang-dotnet=\"`LessThan`\" pulumi-lang-go=\"`lessThan`\" pulumi-lang-python=\"`less_than`\" pulumi-lang-yaml=\"`lessThan`\" pulumi-lang-java=\"`lessThan`\"\u003e`lessThan`\u003c/span\u003e.\n"
                 },
                 "periodDays": {
                     "type": "integer",
@@ -176,7 +176,7 @@
                 },
                 "operator": {
                     "type": "string",
-                    "description": "Comparison operator: greater*than or less*than.\n"
+                    "description": "Comparison operator. Valid values: \u003cspan pulumi-lang-nodejs=\"`greaterThan`\" pulumi-lang-dotnet=\"`GreaterThan`\" pulumi-lang-go=\"`greaterThan`\" pulumi-lang-python=\"`greater_than`\" pulumi-lang-yaml=\"`greaterThan`\" pulumi-lang-java=\"`greaterThan`\"\u003e`greaterThan`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`lessThan`\" pulumi-lang-dotnet=\"`LessThan`\" pulumi-lang-go=\"`lessThan`\" pulumi-lang-python=\"`less_than`\" pulumi-lang-yaml=\"`lessThan`\" pulumi-lang-java=\"`lessThan`\"\u003e`lessThan`\u003c/span\u003e.\n"
                 },
                 "periodDays": {
                     "type": "integer",
@@ -226,7 +226,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Notification type: email, email*owners, slack, microsoft*teams, or pagerduty.\n"
+                    "description": "Notification type. Valid values: \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`emailOwners`\" pulumi-lang-dotnet=\"`EmailOwners`\" pulumi-lang-go=\"`emailOwners`\" pulumi-lang-python=\"`email_owners`\" pulumi-lang-yaml=\"`emailOwners`\" pulumi-lang-java=\"`emailOwners`\"\u003e`emailOwners`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\"\u003e`slack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`microsoftTeams`\" pulumi-lang-dotnet=\"`MicrosoftTeams`\" pulumi-lang-go=\"`microsoftTeams`\" pulumi-lang-python=\"`microsoft_teams`\" pulumi-lang-yaml=\"`microsoftTeams`\" pulumi-lang-java=\"`microsoftTeams`\"\u003e`microsoftTeams`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pagerduty`\" pulumi-lang-dotnet=\"`Pagerduty`\" pulumi-lang-go=\"`pagerduty`\" pulumi-lang-python=\"`pagerduty`\" pulumi-lang-yaml=\"`pagerduty`\" pulumi-lang-java=\"`pagerduty`\"\u003e`pagerduty`\u003c/span\u003e.\n"
                 },
                 "webhookUrl": {
                     "type": "string",
@@ -317,6 +317,92 @@
             },
             "type": "object"
         },
+        "dagsterplus:index/ServiceUserAllBranchDeploymentsGrant:ServiceUserAllBranchDeploymentsGrant": {
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "dagsterplus:index/ServiceUserBranchDeploymentsGrant:ServiceUserBranchDeploymentsGrant": {
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "parentDeployment": {
+                    "type": "string",
+                    "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "parentDeployment"
+            ]
+        },
+        "dagsterplus:index/ServiceUserDeploymentGrant:ServiceUserDeploymentGrant": {
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "deployment": {
+                    "type": "string",
+                    "description": "The name of the deployment to grant access to.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "deployment"
+            ]
+        },
+        "dagsterplus:index/ServiceUserDeploymentGrantLocationGrant:ServiceUserDeploymentGrantLocationGrant": {
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "Custom role ID for this location. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "locationName": {
+                    "type": "string",
+                    "description": "The name of the code location.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "locationName"
+            ]
+        },
+        "dagsterplus:index/ServiceUserOrganizationGrant:ServiceUserOrganizationGrant": {
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                }
+            },
+            "type": "object"
+        },
         "dagsterplus:index/TeamAllBranchDeploymentsGrant:TeamAllBranchDeploymentsGrant": {
             "properties": {
                 "customRoleId": {
@@ -325,10 +411,30 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level: VIEWER, LAUNCHER, EDITOR, or ADMIN. Conflicts with custom*role*id.\n"
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 }
             },
             "type": "object"
+        },
+        "dagsterplus:index/TeamBranchDeploymentsGrant:TeamBranchDeploymentsGrant": {
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "parentDeployment": {
+                    "type": "string",
+                    "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "parentDeployment"
+            ]
         },
         "dagsterplus:index/TeamDeploymentGrant:TeamDeploymentGrant": {
             "properties": {
@@ -342,7 +448,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level: VIEWER, LAUNCHER, EDITOR, or ADMIN. Conflicts with custom*role*id.\n"
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 }
             },
             "type": "object",
@@ -358,7 +464,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level for this location. Conflicts with custom*role*id.\n"
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationName": {
                     "type": "string",
@@ -390,7 +496,93 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level: VIEWER, LAUNCHER, EDITOR, or ADMIN. Conflicts with custom*role*id.\n"
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "dagsterplus:index/UserAllBranchDeploymentsGrant:UserAllBranchDeploymentsGrant": {
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "dagsterplus:index/UserBranchDeploymentsGrant:UserBranchDeploymentsGrant": {
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "parentDeployment": {
+                    "type": "string",
+                    "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "parentDeployment"
+            ]
+        },
+        "dagsterplus:index/UserDeploymentGrant:UserDeploymentGrant": {
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "deployment": {
+                    "type": "string",
+                    "description": "The name of the deployment to grant access to.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "deployment"
+            ]
+        },
+        "dagsterplus:index/UserDeploymentGrantLocationGrant:UserDeploymentGrantLocationGrant": {
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "Custom role ID for this location. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "locationName": {
+                    "type": "string",
+                    "description": "The name of the code location.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "locationName"
+            ]
+        },
+        "dagsterplus:index/UserOrganizationGrant:UserOrganizationGrant": {
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
                 }
             },
             "type": "object"
@@ -1200,6 +1392,10 @@
         },
         "dagsterplus:index/getDeploymentsDeployment:getDeploymentsDeployment": {
             "properties": {
+                "deploymentId": {
+                    "type": "string",
+                    "description": "The numeric deployment ID as a decimal string.\n"
+                },
                 "id": {
                     "type": "string",
                     "description": "Deployment identifier (same as name).\n"
@@ -1219,6 +1415,7 @@
             },
             "type": "object",
             "required": [
+                "deploymentId",
                 "id",
                 "name",
                 "status",
@@ -1378,11 +1575,33 @@
     },
     "resources": {
         "dagsterplus:index/agentToken:AgentToken": {
-            "description": "Manages a Dagster+ agent token. The token value is only available at creation time; it cannot be recovered after import. Changing the name forces a new resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst hybridAgent = new dagsterplus.AgentToken(\"hybrid_agent\", {name: \"hybrid-agent-token\"});\nexport const agentTokenValue = hybridAgent.token;\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nhybrid_agent = dagsterplus.AgentToken(\"hybrid_agent\", name=\"hybrid-agent-token\")\npulumi.export(\"agentTokenValue\", hybrid_agent.token)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var hybridAgent = new Dagsterplus.Index.AgentToken(\"hybrid_agent\", new()\n    {\n        Name = \"hybrid-agent-token\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"agentTokenValue\"] = hybridAgent.Token,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\thybridAgent, err := dagsterplus.NewAgentToken(ctx, \"hybrid_agent\", \u0026dagsterplus.AgentTokenArgs{\n\t\t\tName: pulumi.String(\"hybrid-agent-token\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"agentTokenValue\", hybridAgent.Token)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.AgentToken;\nimport com.pulumi.dagsterplus.AgentTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var hybridAgent = new AgentToken(\"hybridAgent\", AgentTokenArgs.builder()\n            .name(\"hybrid-agent-token\")\n            .build());\n\n        ctx.export(\"agentTokenValue\", hybridAgent.token());\n    }\n}\n```\n```yaml\nresources:\n  hybridAgent:\n    type: dagsterplus:AgentToken\n    name: hybrid_agent\n    properties:\n      name: hybrid-agent-token\noutputs:\n  agentTokenValue: ${hybridAgent.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nAgent tokens are imported using the token ID assigned by Dagster+.\nThe token ID can be found via the Dagster+ API (ListAgentTokens query).\nIMPORTANT: The token value (secret) is only available at creation time and\ncannot be recovered after import. The \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e attribute will be empty after\nimport — plan accordingly (e.g. use\u003cspan pulumi-lang-nodejs=\" ignoreChanges \" pulumi-lang-dotnet=\" IgnoreChanges \" pulumi-lang-go=\" ignoreChanges \" pulumi-lang-python=\" ignore_changes \" pulumi-lang-yaml=\" ignoreChanges \" pulumi-lang-java=\" ignoreChanges \"\u003e ignoreChanges \u003c/span\u003eor recreate the token).\n\n```sh\n$ pulumi import dagsterplus:index/agentToken:AgentToken example \u003ctoken_id\u003e\n```\n\n",
+            "description": "Manages a Dagster+ agent token and its permission grants. The token value is only available at creation time; it cannot be recovered after import. Changing the name forces a new resource. Agent tokens only ever carry the AGENT permission, so the grant attributes only control which scopes the token is granted on.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst hybridAgent = new dagsterplus.AgentToken(\"hybrid_agent\", {name: \"hybrid-agent-token\"});\nexport const agentTokenValue = hybridAgent.token;\n// An ECS agent scoped to specific deployments. Agent tokens always carry the\n// AGENT permission, so the grant attributes only select which scopes apply.\nconst ecsAgent = new dagsterplus.AgentToken(\"ecs_agent\", {\n    name: \"ecs-agent-token\",\n    organization: false,\n    deploymentGrants: [\n        \"prod\",\n        \"staging\",\n    ],\n    allBranchDeployments: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nhybrid_agent = dagsterplus.AgentToken(\"hybrid_agent\", name=\"hybrid-agent-token\")\npulumi.export(\"agentTokenValue\", hybrid_agent.token)\n# An ECS agent scoped to specific deployments. Agent tokens always carry the\n# AGENT permission, so the grant attributes only select which scopes apply.\necs_agent = dagsterplus.AgentToken(\"ecs_agent\",\n    name=\"ecs-agent-token\",\n    organization=False,\n    deployment_grants=[\n        \"prod\",\n        \"staging\",\n    ],\n    all_branch_deployments=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var hybridAgent = new Dagsterplus.Index.AgentToken(\"hybrid_agent\", new()\n    {\n        Name = \"hybrid-agent-token\",\n    });\n\n    // An ECS agent scoped to specific deployments. Agent tokens always carry the\n    // AGENT permission, so the grant attributes only select which scopes apply.\n    var ecsAgent = new Dagsterplus.Index.AgentToken(\"ecs_agent\", new()\n    {\n        Name = \"ecs-agent-token\",\n        Organization = false,\n        DeploymentGrants = new[]\n        {\n            \"prod\",\n            \"staging\",\n        },\n        AllBranchDeployments = true,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"agentTokenValue\"] = hybridAgent.Token,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\thybridAgent, err := dagsterplus.NewAgentToken(ctx, \"hybrid_agent\", \u0026dagsterplus.AgentTokenArgs{\n\t\t\tName: pulumi.String(\"hybrid-agent-token\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"agentTokenValue\", hybridAgent.Token)\n\t\t// An ECS agent scoped to specific deployments. Agent tokens always carry the\n\t\t// AGENT permission, so the grant attributes only select which scopes apply.\n\t\t_, err = dagsterplus.NewAgentToken(ctx, \"ecs_agent\", \u0026dagsterplus.AgentTokenArgs{\n\t\t\tName:         pulumi.String(\"ecs-agent-token\"),\n\t\t\tOrganization: pulumi.Bool(false),\n\t\t\tDeploymentGrants: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"prod\"),\n\t\t\t\tpulumi.String(\"staging\"),\n\t\t\t},\n\t\t\tAllBranchDeployments: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.AgentToken;\nimport com.pulumi.dagsterplus.AgentTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var hybridAgent = new AgentToken(\"hybridAgent\", AgentTokenArgs.builder()\n            .name(\"hybrid-agent-token\")\n            .build());\n\n        ctx.export(\"agentTokenValue\", hybridAgent.token());\n        // An ECS agent scoped to specific deployments. Agent tokens always carry the\n        // AGENT permission, so the grant attributes only select which scopes apply.\n        var ecsAgent = new AgentToken(\"ecsAgent\", AgentTokenArgs.builder()\n            .name(\"ecs-agent-token\")\n            .organization(false)\n            .deploymentGrants(            \n                \"prod\",\n                \"staging\")\n            .allBranchDeployments(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  hybridAgent:\n    type: dagsterplus:AgentToken\n    name: hybrid_agent\n    properties:\n      name: hybrid-agent-token\n  # An ECS agent scoped to specific deployments. Agent tokens always carry the\n  # AGENT permission, so the grant attributes only select which scopes apply.\n  ecsAgent:\n    type: dagsterplus:AgentToken\n    name: ecs_agent\n    properties:\n      name: ecs-agent-token\n      organization: false # Grant the agent on specific full deployments and all of their branch deployments.\n      deploymentGrants:\n        - prod\n        - staging\n      allBranchDeployments: true\noutputs:\n  agentTokenValue: ${hybridAgent.token}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nAgent tokens are imported using the token ID assigned by Dagster+.\nThe token ID can be found via the Dagster+ API (ListAgentTokens query).\nIMPORTANT: The token value (secret) is only available at creation time and\ncannot be recovered after import. The \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e attribute will be empty after\nimport — plan accordingly (e.g. use\u003cspan pulumi-lang-nodejs=\" ignoreChanges \" pulumi-lang-dotnet=\" IgnoreChanges \" pulumi-lang-go=\" ignoreChanges \" pulumi-lang-python=\" ignore_changes \" pulumi-lang-yaml=\" ignoreChanges \" pulumi-lang-java=\" ignoreChanges \"\u003e ignoreChanges \u003c/span\u003eor recreate the token).\n\n```sh\n$ pulumi import dagsterplus:index/agentToken:AgentToken example \u003ctoken_id\u003e\n```\n\n",
             "properties": {
+                "allBranchDeployments": {
+                    "type": "boolean",
+                    "description": "Whether the token holds the AGENT grant across all branch deployments. Defaults to false.\n"
+                },
+                "branchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of full (parent) deployments whose branch deployments the token is granted the AGENT permission on.\n"
+                },
+                "deploymentGrants": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of full deployments the token is granted the AGENT permission on.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The label for the agent token. Changing this forces a new resource.\n"
+                },
+                "organization": {
+                    "type": "boolean",
+                    "description": "Whether the token holds the organization-scoped AGENT grant. Dagster+ creates this grant automatically with every new token; set to false to remove it. Defaults to true.\n"
                 },
                 "token": {
                     "type": "string",
@@ -1391,13 +1610,37 @@
                 }
             },
             "required": [
+                "allBranchDeployments",
                 "name",
+                "organization",
                 "token"
             ],
             "inputProperties": {
+                "allBranchDeployments": {
+                    "type": "boolean",
+                    "description": "Whether the token holds the AGENT grant across all branch deployments. Defaults to false.\n"
+                },
+                "branchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of full (parent) deployments whose branch deployments the token is granted the AGENT permission on.\n"
+                },
+                "deploymentGrants": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of full deployments the token is granted the AGENT permission on.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The label for the agent token. Changing this forces a new resource.\n"
+                },
+                "organization": {
+                    "type": "boolean",
+                    "description": "Whether the token holds the organization-scoped AGENT grant. Dagster+ creates this grant automatically with every new token; set to false to remove it. Defaults to true.\n"
                 }
             },
             "requiredInputs": [
@@ -1406,14 +1649,81 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AgentToken resources.\n",
                 "properties": {
+                    "allBranchDeployments": {
+                        "type": "boolean",
+                        "description": "Whether the token holds the AGENT grant across all branch deployments. Defaults to false.\n"
+                    },
+                    "branchDeploymentsGrants": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Names of full (parent) deployments whose branch deployments the token is granted the AGENT permission on.\n"
+                    },
+                    "deploymentGrants": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Names of full deployments the token is granted the AGENT permission on.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The label for the agent token. Changing this forces a new resource.\n"
+                    },
+                    "organization": {
+                        "type": "boolean",
+                        "description": "Whether the token holds the organization-scoped AGENT grant. Dagster+ creates this grant automatically with every new token; set to false to remove it. Defaults to true.\n"
                     },
                     "token": {
                         "type": "string",
                         "description": "The agent token value. Only populated on creation; not recoverable after import.\n",
                         "secret": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dagsterplus:index/agentTokenDeploymentGrant:AgentTokenDeploymentGrant": {
+            "description": "Grants an agent token the AGENT permission on a specific deployment. Agent tokens only ever carry the AGENT permission, so there is no grant level to configure.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\n// Grant an agent token the AGENT permission on individual deployments.\n// Useful when deployments are managed in a separate module from the token\n// (e.g. iterating over deployments with for_each).\nconst ecsAgent = new dagsterplus.AgentToken(\"ecs_agent\", {\n    name: \"ecs-agent-token\",\n    organization: false,\n});\nconst prod = new dagsterplus.AgentTokenDeploymentGrant(\"prod\", {\n    agentTokenId: ecsAgent.id,\n    deployment: \"prod\",\n});\nconst staging = new dagsterplus.AgentTokenDeploymentGrant(\"staging\", {\n    agentTokenId: ecsAgent.id,\n    deployment: \"staging\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\n# Grant an agent token the AGENT permission on individual deployments.\n# Useful when deployments are managed in a separate module from the token\n# (e.g. iterating over deployments with for_each).\necs_agent = dagsterplus.AgentToken(\"ecs_agent\",\n    name=\"ecs-agent-token\",\n    organization=False)\nprod = dagsterplus.AgentTokenDeploymentGrant(\"prod\",\n    agent_token_id=ecs_agent.id,\n    deployment=\"prod\")\nstaging = dagsterplus.AgentTokenDeploymentGrant(\"staging\",\n    agent_token_id=ecs_agent.id,\n    deployment=\"staging\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Grant an agent token the AGENT permission on individual deployments.\n    // Useful when deployments are managed in a separate module from the token\n    // (e.g. iterating over deployments with for_each).\n    var ecsAgent = new Dagsterplus.Index.AgentToken(\"ecs_agent\", new()\n    {\n        Name = \"ecs-agent-token\",\n        Organization = false,\n    });\n\n    var prod = new Dagsterplus.Index.AgentTokenDeploymentGrant(\"prod\", new()\n    {\n        AgentTokenId = ecsAgent.Id,\n        Deployment = \"prod\",\n    });\n\n    var staging = new Dagsterplus.Index.AgentTokenDeploymentGrant(\"staging\", new()\n    {\n        AgentTokenId = ecsAgent.Id,\n        Deployment = \"staging\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Grant an agent token the AGENT permission on individual deployments.\n\t\t// Useful when deployments are managed in a separate module from the token\n\t\t// (e.g. iterating over deployments with for_each).\n\t\tecsAgent, err := dagsterplus.NewAgentToken(ctx, \"ecs_agent\", \u0026dagsterplus.AgentTokenArgs{\n\t\t\tName:         pulumi.String(\"ecs-agent-token\"),\n\t\t\tOrganization: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dagsterplus.NewAgentTokenDeploymentGrant(ctx, \"prod\", \u0026dagsterplus.AgentTokenDeploymentGrantArgs{\n\t\t\tAgentTokenId: ecsAgent.ID(),\n\t\t\tDeployment:   pulumi.String(\"prod\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dagsterplus.NewAgentTokenDeploymentGrant(ctx, \"staging\", \u0026dagsterplus.AgentTokenDeploymentGrantArgs{\n\t\t\tAgentTokenId: ecsAgent.ID(),\n\t\t\tDeployment:   pulumi.String(\"staging\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.AgentToken;\nimport com.pulumi.dagsterplus.AgentTokenArgs;\nimport com.pulumi.dagsterplus.AgentTokenDeploymentGrant;\nimport com.pulumi.dagsterplus.AgentTokenDeploymentGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Grant an agent token the AGENT permission on individual deployments.\n        // Useful when deployments are managed in a separate module from the token\n        // (e.g. iterating over deployments with for_each).\n        var ecsAgent = new AgentToken(\"ecsAgent\", AgentTokenArgs.builder()\n            .name(\"ecs-agent-token\")\n            .organization(false)\n            .build());\n\n        var prod = new AgentTokenDeploymentGrant(\"prod\", AgentTokenDeploymentGrantArgs.builder()\n            .agentTokenId(ecsAgent.id())\n            .deployment(\"prod\")\n            .build());\n\n        var staging = new AgentTokenDeploymentGrant(\"staging\", AgentTokenDeploymentGrantArgs.builder()\n            .agentTokenId(ecsAgent.id())\n            .deployment(\"staging\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Grant an agent token the AGENT permission on individual deployments.\n  # Useful when deployments are managed in a separate module from the token\n  # (e.g. iterating over deployments with for_each).\n  ecsAgent:\n    type: dagsterplus:AgentToken\n    name: ecs_agent\n    properties:\n      name: ecs-agent-token\n      organization: false\n  prod:\n    type: dagsterplus:AgentTokenDeploymentGrant\n    properties:\n      agentTokenId: ${ecsAgent.id}\n      deployment: prod\n  staging:\n    type: dagsterplus:AgentTokenDeploymentGrant\n    properties:\n      agentTokenId: ${ecsAgent.id}\n      deployment: staging\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport using {agent_token_id}/{deployment}\n\n```sh\n$ pulumi import dagsterplus:index/agentTokenDeploymentGrant:AgentTokenDeploymentGrant prod \u003cagent_token_id\u003e/prod\n```\n\n",
+            "properties": {
+                "agentTokenId": {
+                    "type": "string",
+                    "description": "The ID of the agent token to grant access. Changing this forces a new resource.\n"
+                },
+                "deployment": {
+                    "type": "string",
+                    "description": "The name of the deployment to grant access to. Changing this forces a new resource.\n"
+                }
+            },
+            "required": [
+                "agentTokenId",
+                "deployment"
+            ],
+            "inputProperties": {
+                "agentTokenId": {
+                    "type": "string",
+                    "description": "The ID of the agent token to grant access. Changing this forces a new resource.\n"
+                },
+                "deployment": {
+                    "type": "string",
+                    "description": "The name of the deployment to grant access to. Changing this forces a new resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "agentTokenId",
+                "deployment"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AgentTokenDeploymentGrant resources.\n",
+                "properties": {
+                    "agentTokenId": {
+                        "type": "string",
+                        "description": "The ID of the agent token to grant access. Changing this forces a new resource.\n"
+                    },
+                    "deployment": {
+                        "type": "string",
+                        "description": "The name of the deployment to grant access to. Changing this forces a new resource.\n"
                     }
                 },
                 "type": "object"
@@ -1486,7 +1796,7 @@
                 },
                 "policyType": {
                     "type": "string",
-                    "description": "The category of alert policy: asset, run, code*location, automation, budget, or insight*metric.\n"
+                    "description": "The category of alert policy. Valid values: \u003cspan pulumi-lang-nodejs=\"`asset`\" pulumi-lang-dotnet=\"`Asset`\" pulumi-lang-go=\"`asset`\" pulumi-lang-python=\"`asset`\" pulumi-lang-yaml=\"`asset`\" pulumi-lang-java=\"`asset`\"\u003e`asset`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`run`\" pulumi-lang-dotnet=\"`Run`\" pulumi-lang-go=\"`run`\" pulumi-lang-python=\"`run`\" pulumi-lang-yaml=\"`run`\" pulumi-lang-java=\"`run`\"\u003e`run`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`codeLocation`\" pulumi-lang-dotnet=\"`CodeLocation`\" pulumi-lang-go=\"`codeLocation`\" pulumi-lang-python=\"`code_location`\" pulumi-lang-yaml=\"`codeLocation`\" pulumi-lang-java=\"`codeLocation`\"\u003e`codeLocation`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`automation`\" pulumi-lang-dotnet=\"`Automation`\" pulumi-lang-go=\"`automation`\" pulumi-lang-python=\"`automation`\" pulumi-lang-yaml=\"`automation`\" pulumi-lang-java=\"`automation`\"\u003e`automation`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`budget`\" pulumi-lang-dotnet=\"`Budget`\" pulumi-lang-go=\"`budget`\" pulumi-lang-python=\"`budget`\" pulumi-lang-yaml=\"`budget`\" pulumi-lang-java=\"`budget`\"\u003e`budget`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`insightMetric`\" pulumi-lang-dotnet=\"`InsightMetric`\" pulumi-lang-go=\"`insightMetric`\" pulumi-lang-python=\"`insight_metric`\" pulumi-lang-yaml=\"`insightMetric`\" pulumi-lang-java=\"`insightMetric`\"\u003e`insightMetric`\u003c/span\u003e.\n"
                 },
                 "runs": {
                     "type": "array",
@@ -1562,7 +1872,7 @@
                 },
                 "policyType": {
                     "type": "string",
-                    "description": "The category of alert policy: asset, run, code*location, automation, budget, or insight*metric.\n"
+                    "description": "The category of alert policy. Valid values: \u003cspan pulumi-lang-nodejs=\"`asset`\" pulumi-lang-dotnet=\"`Asset`\" pulumi-lang-go=\"`asset`\" pulumi-lang-python=\"`asset`\" pulumi-lang-yaml=\"`asset`\" pulumi-lang-java=\"`asset`\"\u003e`asset`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`run`\" pulumi-lang-dotnet=\"`Run`\" pulumi-lang-go=\"`run`\" pulumi-lang-python=\"`run`\" pulumi-lang-yaml=\"`run`\" pulumi-lang-java=\"`run`\"\u003e`run`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`codeLocation`\" pulumi-lang-dotnet=\"`CodeLocation`\" pulumi-lang-go=\"`codeLocation`\" pulumi-lang-python=\"`code_location`\" pulumi-lang-yaml=\"`codeLocation`\" pulumi-lang-java=\"`codeLocation`\"\u003e`codeLocation`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`automation`\" pulumi-lang-dotnet=\"`Automation`\" pulumi-lang-go=\"`automation`\" pulumi-lang-python=\"`automation`\" pulumi-lang-yaml=\"`automation`\" pulumi-lang-java=\"`automation`\"\u003e`automation`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`budget`\" pulumi-lang-dotnet=\"`Budget`\" pulumi-lang-go=\"`budget`\" pulumi-lang-python=\"`budget`\" pulumi-lang-yaml=\"`budget`\" pulumi-lang-java=\"`budget`\"\u003e`budget`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`insightMetric`\" pulumi-lang-dotnet=\"`InsightMetric`\" pulumi-lang-go=\"`insightMetric`\" pulumi-lang-python=\"`insight_metric`\" pulumi-lang-yaml=\"`insightMetric`\" pulumi-lang-java=\"`insightMetric`\"\u003e`insightMetric`\u003c/span\u003e.\n"
                 },
                 "runs": {
                     "type": "array",
@@ -1645,7 +1955,7 @@
                     },
                     "policyType": {
                         "type": "string",
-                        "description": "The category of alert policy: asset, run, code*location, automation, budget, or insight*metric.\n"
+                        "description": "The category of alert policy. Valid values: \u003cspan pulumi-lang-nodejs=\"`asset`\" pulumi-lang-dotnet=\"`Asset`\" pulumi-lang-go=\"`asset`\" pulumi-lang-python=\"`asset`\" pulumi-lang-yaml=\"`asset`\" pulumi-lang-java=\"`asset`\"\u003e`asset`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`run`\" pulumi-lang-dotnet=\"`Run`\" pulumi-lang-go=\"`run`\" pulumi-lang-python=\"`run`\" pulumi-lang-yaml=\"`run`\" pulumi-lang-java=\"`run`\"\u003e`run`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`codeLocation`\" pulumi-lang-dotnet=\"`CodeLocation`\" pulumi-lang-go=\"`codeLocation`\" pulumi-lang-python=\"`code_location`\" pulumi-lang-yaml=\"`codeLocation`\" pulumi-lang-java=\"`codeLocation`\"\u003e`codeLocation`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`automation`\" pulumi-lang-dotnet=\"`Automation`\" pulumi-lang-go=\"`automation`\" pulumi-lang-python=\"`automation`\" pulumi-lang-yaml=\"`automation`\" pulumi-lang-java=\"`automation`\"\u003e`automation`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`budget`\" pulumi-lang-dotnet=\"`Budget`\" pulumi-lang-go=\"`budget`\" pulumi-lang-python=\"`budget`\" pulumi-lang-yaml=\"`budget`\" pulumi-lang-java=\"`budget`\"\u003e`budget`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`insightMetric`\" pulumi-lang-dotnet=\"`InsightMetric`\" pulumi-lang-go=\"`insightMetric`\" pulumi-lang-python=\"`insight_metric`\" pulumi-lang-yaml=\"`insightMetric`\" pulumi-lang-java=\"`insightMetric`\"\u003e`insightMetric`\u003c/span\u003e.\n"
                     },
                     "runs": {
                         "type": "array",
@@ -1977,8 +2287,12 @@
             }
         },
         "dagsterplus:index/deployment:Deployment": {
-            "description": "Manages a Dagster+ deployment.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst prod = new dagsterplus.Deployment(\"prod\", {name: \"prod\"});\nexport const prodDeploymentId = prod.deploymentId;\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nprod = dagsterplus.Deployment(\"prod\", name=\"prod\")\npulumi.export(\"prodDeploymentId\", prod.deployment_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Dagsterplus.Index.Deployment(\"prod\", new()\n    {\n        Name = \"prod\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"prodDeploymentId\"] = prod.DeploymentId,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := dagsterplus.NewDeployment(ctx, \"prod\", \u0026dagsterplus.DeploymentArgs{\n\t\t\tName: pulumi.String(\"prod\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"prodDeploymentId\", pulumi.Any(prod.DeploymentId))\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.Deployment;\nimport com.pulumi.dagsterplus.DeploymentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new Deployment(\"prod\", DeploymentArgs.builder()\n            .name(\"prod\")\n            .build());\n\n        ctx.export(\"prodDeploymentId\", prod.deploymentId());\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: dagsterplus:Deployment\n    properties:\n      name: prod\noutputs:\n  prodDeploymentId: ${prod.deploymentId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nDeployments are imported using the deployment name (which is also the ID).\n\n```sh\n$ pulumi import dagsterplus:index/deployment:Deployment example prod\n```\n\n",
+            "description": "Manages a Dagster+ deployment.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst prod = new dagsterplus.Deployment(\"prod\", {name: \"prod\"});\nexport const prodDeploymentId = prod.deploymentId;\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nprod = dagsterplus.Deployment(\"prod\", name=\"prod\")\npulumi.export(\"prodDeploymentId\", prod.deployment_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Dagsterplus.Index.Deployment(\"prod\", new()\n    {\n        Name = \"prod\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"prodDeploymentId\"] = prod.DeploymentId,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := dagsterplus.NewDeployment(ctx, \"prod\", \u0026dagsterplus.DeploymentArgs{\n\t\t\tName: pulumi.String(\"prod\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"prodDeploymentId\", prod.DeploymentId)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.Deployment;\nimport com.pulumi.dagsterplus.DeploymentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new Deployment(\"prod\", DeploymentArgs.builder()\n            .name(\"prod\")\n            .build());\n\n        ctx.export(\"prodDeploymentId\", prod.deploymentId());\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: dagsterplus:Deployment\n    properties:\n      name: prod\noutputs:\n  prodDeploymentId: ${prod.deploymentId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nDeployments are imported using the deployment name (which is also the ID).\n\n```sh\n$ pulumi import dagsterplus:index/deployment:Deployment example prod\n```\n\n",
             "properties": {
+                "deploymentId": {
+                    "type": "string",
+                    "description": "The numeric deployment ID as a decimal string. Use this with GraphQL mutations such as `createOrUpdateAgentPermissions`.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the deployment. Changing this forces a new resource.\n"
@@ -1989,6 +2303,7 @@
                 }
             },
             "required": [
+                "deploymentId",
                 "name",
                 "status"
             ],
@@ -2004,6 +2319,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Deployment resources.\n",
                 "properties": {
+                    "deploymentId": {
+                        "type": "string",
+                        "description": "The numeric deployment ID as a decimal string. Use this with GraphQL mutations such as `createOrUpdateAgentPermissions`.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the deployment. Changing this forces a new resource.\n"
@@ -2066,7 +2385,7 @@
             "properties": {
                 "connectionType": {
                     "type": "string",
-                    "description": "The type of external connection. Changing this forces a new resource. Valid values: SNOWFLAKE, BIGQUERY, POSTGRES, DATABRICKS.\n"
+                    "description": "The type of external connection. Changing this forces a new resource. Valid values: `SNOWFLAKE`, `BIGQUERY`, `POSTGRES`, `DATABRICKS`.\n"
                 },
                 "cronString": {
                     "type": "string",
@@ -2106,7 +2425,7 @@
             "inputProperties": {
                 "connectionType": {
                     "type": "string",
-                    "description": "The type of external connection. Changing this forces a new resource. Valid values: SNOWFLAKE, BIGQUERY, POSTGRES, DATABRICKS.\n"
+                    "description": "The type of external connection. Changing this forces a new resource. Valid values: `SNOWFLAKE`, `BIGQUERY`, `POSTGRES`, `DATABRICKS`.\n"
                 },
                 "cronString": {
                     "type": "string",
@@ -2140,7 +2459,7 @@
                 "properties": {
                     "connectionType": {
                         "type": "string",
-                        "description": "The type of external connection. Changing this forces a new resource. Valid values: SNOWFLAKE, BIGQUERY, POSTGRES, DATABRICKS.\n"
+                        "description": "The type of external connection. Changing this forces a new resource. Valid values: `SNOWFLAKE`, `BIGQUERY`, `POSTGRES`, `DATABRICKS`.\n"
                     },
                     "cronString": {
                         "type": "string",
@@ -2288,11 +2607,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The permissions granted by this role. At least one permission is required.\n"
+                    "description": "The permissions granted by this role. At least one permission is required. Valid values: \u003cspan pulumi-lang-nodejs=\"`deleteRuns`\" pulumi-lang-dotnet=\"`DeleteRuns`\" pulumi-lang-go=\"`deleteRuns`\" pulumi-lang-python=\"`delete_runs`\" pulumi-lang-yaml=\"`deleteRuns`\" pulumi-lang-java=\"`deleteRuns`\"\u003e`deleteRuns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editAlerts`\" pulumi-lang-dotnet=\"`EditAlerts`\" pulumi-lang-go=\"`editAlerts`\" pulumi-lang-python=\"`edit_alerts`\" pulumi-lang-yaml=\"`editAlerts`\" pulumi-lang-java=\"`editAlerts`\"\u003e`editAlerts`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editAllCatalogViews`\" pulumi-lang-dotnet=\"`EditAllCatalogViews`\" pulumi-lang-go=\"`editAllCatalogViews`\" pulumi-lang-python=\"`edit_all_catalog_views`\" pulumi-lang-yaml=\"`editAllCatalogViews`\" pulumi-lang-java=\"`editAllCatalogViews`\"\u003e`editAllCatalogViews`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editCodeLocations`\" pulumi-lang-dotnet=\"`EditCodeLocations`\" pulumi-lang-go=\"`editCodeLocations`\" pulumi-lang-python=\"`edit_code_locations`\" pulumi-lang-yaml=\"`editCodeLocations`\" pulumi-lang-java=\"`editCodeLocations`\"\u003e`editCodeLocations`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editConcurrencyLimits`\" pulumi-lang-dotnet=\"`EditConcurrencyLimits`\" pulumi-lang-go=\"`editConcurrencyLimits`\" pulumi-lang-python=\"`edit_concurrency_limits`\" pulumi-lang-yaml=\"`editConcurrencyLimits`\" pulumi-lang-java=\"`editConcurrencyLimits`\"\u003e`editConcurrencyLimits`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editCustomRoles`\" pulumi-lang-dotnet=\"`EditCustomRoles`\" pulumi-lang-go=\"`editCustomRoles`\" pulumi-lang-python=\"`edit_custom_roles`\" pulumi-lang-yaml=\"`editCustomRoles`\" pulumi-lang-java=\"`editCustomRoles`\"\u003e`editCustomRoles`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editDeploymentPermissions`\" pulumi-lang-dotnet=\"`EditDeploymentPermissions`\" pulumi-lang-go=\"`editDeploymentPermissions`\" pulumi-lang-python=\"`edit_deployment_permissions`\" pulumi-lang-yaml=\"`editDeploymentPermissions`\" pulumi-lang-java=\"`editDeploymentPermissions`\"\u003e`editDeploymentPermissions`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editDeploymentSettings`\" pulumi-lang-dotnet=\"`EditDeploymentSettings`\" pulumi-lang-go=\"`editDeploymentSettings`\" pulumi-lang-python=\"`edit_deployment_settings`\" pulumi-lang-yaml=\"`editDeploymentSettings`\" pulumi-lang-java=\"`editDeploymentSettings`\"\u003e`editDeploymentSettings`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editDynamicPartitions`\" pulumi-lang-dotnet=\"`EditDynamicPartitions`\" pulumi-lang-go=\"`editDynamicPartitions`\" pulumi-lang-python=\"`edit_dynamic_partitions`\" pulumi-lang-yaml=\"`editDynamicPartitions`\" pulumi-lang-java=\"`editDynamicPartitions`\"\u003e`editDynamicPartitions`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editExternalAssetConnections`\" pulumi-lang-dotnet=\"`EditExternalAssetConnections`\" pulumi-lang-go=\"`editExternalAssetConnections`\" pulumi-lang-python=\"`edit_external_asset_connections`\" pulumi-lang-yaml=\"`editExternalAssetConnections`\" pulumi-lang-java=\"`editExternalAssetConnections`\"\u003e`editExternalAssetConnections`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editInsightsMetrics`\" pulumi-lang-dotnet=\"`EditInsightsMetrics`\" pulumi-lang-go=\"`editInsightsMetrics`\" pulumi-lang-python=\"`edit_insights_metrics`\" pulumi-lang-yaml=\"`editInsightsMetrics`\" pulumi-lang-java=\"`editInsightsMetrics`\"\u003e`editInsightsMetrics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editIssues`\" pulumi-lang-dotnet=\"`EditIssues`\" pulumi-lang-go=\"`editIssues`\" pulumi-lang-python=\"`edit_issues`\" pulumi-lang-yaml=\"`editIssues`\" pulumi-lang-java=\"`editIssues`\"\u003e`editIssues`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editSecrets`\" pulumi-lang-dotnet=\"`EditSecrets`\" pulumi-lang-go=\"`editSecrets`\" pulumi-lang-python=\"`edit_secrets`\" pulumi-lang-yaml=\"`editSecrets`\" pulumi-lang-java=\"`editSecrets`\"\u003e`editSecrets`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editSensorCursors`\" pulumi-lang-dotnet=\"`EditSensorCursors`\" pulumi-lang-go=\"`editSensorCursors`\" pulumi-lang-python=\"`edit_sensor_cursors`\" pulumi-lang-yaml=\"`editSensorCursors`\" pulumi-lang-java=\"`editSensorCursors`\"\u003e`editSensorCursors`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editUsersAndTeams`\" pulumi-lang-dotnet=\"`EditUsersAndTeams`\" pulumi-lang-go=\"`editUsersAndTeams`\" pulumi-lang-python=\"`edit_users_and_teams`\" pulumi-lang-yaml=\"`editUsersAndTeams`\" pulumi-lang-java=\"`editUsersAndTeams`\"\u003e`editUsersAndTeams`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageBilling`\" pulumi-lang-dotnet=\"`ManageBilling`\" pulumi-lang-go=\"`manageBilling`\" pulumi-lang-python=\"`manage_billing`\" pulumi-lang-yaml=\"`manageBilling`\" pulumi-lang-java=\"`manageBilling`\"\u003e`manageBilling`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageBranchDeployments`\" pulumi-lang-dotnet=\"`ManageBranchDeployments`\" pulumi-lang-go=\"`manageBranchDeployments`\" pulumi-lang-python=\"`manage_branch_deployments`\" pulumi-lang-yaml=\"`manageBranchDeployments`\" pulumi-lang-java=\"`manageBranchDeployments`\"\u003e`manageBranchDeployments`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageFullDeployments`\" pulumi-lang-dotnet=\"`ManageFullDeployments`\" pulumi-lang-go=\"`manageFullDeployments`\" pulumi-lang-python=\"`manage_full_deployments`\" pulumi-lang-yaml=\"`manageFullDeployments`\" pulumi-lang-java=\"`manageFullDeployments`\"\u003e`manageFullDeployments`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageServiceUsers`\" pulumi-lang-dotnet=\"`ManageServiceUsers`\" pulumi-lang-go=\"`manageServiceUsers`\" pulumi-lang-python=\"`manage_service_users`\" pulumi-lang-yaml=\"`manageServiceUsers`\" pulumi-lang-java=\"`manageServiceUsers`\"\u003e`manageServiceUsers`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageSsoAndScim`\" pulumi-lang-dotnet=\"`ManageSsoAndScim`\" pulumi-lang-go=\"`manageSsoAndScim`\" pulumi-lang-python=\"`manage_sso_and_scim`\" pulumi-lang-yaml=\"`manageSsoAndScim`\" pulumi-lang-java=\"`manageSsoAndScim`\"\u003e`manageSsoAndScim`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readAndEditAgentTokens`\" pulumi-lang-dotnet=\"`ReadAndEditAgentTokens`\" pulumi-lang-go=\"`readAndEditAgentTokens`\" pulumi-lang-python=\"`read_and_edit_agent_tokens`\" pulumi-lang-yaml=\"`readAndEditAgentTokens`\" pulumi-lang-java=\"`readAndEditAgentTokens`\"\u003e`readAndEditAgentTokens`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readAndEditAllUserTokens`\" pulumi-lang-dotnet=\"`ReadAndEditAllUserTokens`\" pulumi-lang-go=\"`readAndEditAllUserTokens`\" pulumi-lang-python=\"`read_and_edit_all_user_tokens`\" pulumi-lang-yaml=\"`readAndEditAllUserTokens`\" pulumi-lang-java=\"`readAndEditAllUserTokens`\"\u003e`readAndEditAllUserTokens`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readAuditLog`\" pulumi-lang-dotnet=\"`ReadAuditLog`\" pulumi-lang-go=\"`readAuditLog`\" pulumi-lang-python=\"`read_audit_log`\" pulumi-lang-yaml=\"`readAuditLog`\" pulumi-lang-java=\"`readAuditLog`\"\u003e`readAuditLog`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readSecretValues`\" pulumi-lang-dotnet=\"`ReadSecretValues`\" pulumi-lang-go=\"`readSecretValues`\" pulumi-lang-python=\"`read_secret_values`\" pulumi-lang-yaml=\"`readSecretValues`\" pulumi-lang-java=\"`readSecretValues`\"\u003e`readSecretValues`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`redeployCodeLocations`\" pulumi-lang-dotnet=\"`RedeployCodeLocations`\" pulumi-lang-go=\"`redeployCodeLocations`\" pulumi-lang-python=\"`redeploy_code_locations`\" pulumi-lang-yaml=\"`redeployCodeLocations`\" pulumi-lang-java=\"`redeployCodeLocations`\"\u003e`redeployCodeLocations`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`reportAssetEvents`\" pulumi-lang-dotnet=\"`ReportAssetEvents`\" pulumi-lang-go=\"`reportAssetEvents`\" pulumi-lang-python=\"`report_asset_events`\" pulumi-lang-yaml=\"`reportAssetEvents`\" pulumi-lang-java=\"`reportAssetEvents`\"\u003e`reportAssetEvents`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`startAndStopRuns`\" pulumi-lang-dotnet=\"`StartAndStopRuns`\" pulumi-lang-go=\"`startAndStopRuns`\" pulumi-lang-python=\"`start_and_stop_runs`\" pulumi-lang-yaml=\"`startAndStopRuns`\" pulumi-lang-java=\"`startAndStopRuns`\"\u003e`startAndStopRuns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`toggleSchedules`\" pulumi-lang-dotnet=\"`ToggleSchedules`\" pulumi-lang-go=\"`toggleSchedules`\" pulumi-lang-python=\"`toggle_schedules`\" pulumi-lang-yaml=\"`toggleSchedules`\" pulumi-lang-java=\"`toggleSchedules`\"\u003e`toggleSchedules`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`toggleSensors`\" pulumi-lang-dotnet=\"`ToggleSensors`\" pulumi-lang-go=\"`toggleSensors`\" pulumi-lang-python=\"`toggle_sensors`\" pulumi-lang-yaml=\"`toggleSensors`\" pulumi-lang-java=\"`toggleSensors`\"\u003e`toggleSensors`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wipeAssets`\" pulumi-lang-dotnet=\"`WipeAssets`\" pulumi-lang-go=\"`wipeAssets`\" pulumi-lang-python=\"`wipe_assets`\" pulumi-lang-yaml=\"`wipeAssets`\" pulumi-lang-java=\"`wipeAssets`\"\u003e`wipeAssets`\u003c/span\u003e.\n"
                 },
                 "roleType": {
                     "type": "string",
-                    "description": "The scope of the role: deployment or organization. Changing this forces a new resource.\n"
+                    "description": "The scope of the role. Changing this forces a new resource. Valid values: \u003cspan pulumi-lang-nodejs=\"`deployment`\" pulumi-lang-dotnet=\"`Deployment`\" pulumi-lang-go=\"`deployment`\" pulumi-lang-python=\"`deployment`\" pulumi-lang-yaml=\"`deployment`\" pulumi-lang-java=\"`deployment`\"\u003e`deployment`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`organization`\" pulumi-lang-dotnet=\"`Organization`\" pulumi-lang-go=\"`organization`\" pulumi-lang-python=\"`organization`\" pulumi-lang-yaml=\"`organization`\" pulumi-lang-java=\"`organization`\"\u003e`organization`\u003c/span\u003e.\n"
                 }
             },
             "required": [
@@ -2320,11 +2639,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The permissions granted by this role. At least one permission is required.\n"
+                    "description": "The permissions granted by this role. At least one permission is required. Valid values: \u003cspan pulumi-lang-nodejs=\"`deleteRuns`\" pulumi-lang-dotnet=\"`DeleteRuns`\" pulumi-lang-go=\"`deleteRuns`\" pulumi-lang-python=\"`delete_runs`\" pulumi-lang-yaml=\"`deleteRuns`\" pulumi-lang-java=\"`deleteRuns`\"\u003e`deleteRuns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editAlerts`\" pulumi-lang-dotnet=\"`EditAlerts`\" pulumi-lang-go=\"`editAlerts`\" pulumi-lang-python=\"`edit_alerts`\" pulumi-lang-yaml=\"`editAlerts`\" pulumi-lang-java=\"`editAlerts`\"\u003e`editAlerts`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editAllCatalogViews`\" pulumi-lang-dotnet=\"`EditAllCatalogViews`\" pulumi-lang-go=\"`editAllCatalogViews`\" pulumi-lang-python=\"`edit_all_catalog_views`\" pulumi-lang-yaml=\"`editAllCatalogViews`\" pulumi-lang-java=\"`editAllCatalogViews`\"\u003e`editAllCatalogViews`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editCodeLocations`\" pulumi-lang-dotnet=\"`EditCodeLocations`\" pulumi-lang-go=\"`editCodeLocations`\" pulumi-lang-python=\"`edit_code_locations`\" pulumi-lang-yaml=\"`editCodeLocations`\" pulumi-lang-java=\"`editCodeLocations`\"\u003e`editCodeLocations`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editConcurrencyLimits`\" pulumi-lang-dotnet=\"`EditConcurrencyLimits`\" pulumi-lang-go=\"`editConcurrencyLimits`\" pulumi-lang-python=\"`edit_concurrency_limits`\" pulumi-lang-yaml=\"`editConcurrencyLimits`\" pulumi-lang-java=\"`editConcurrencyLimits`\"\u003e`editConcurrencyLimits`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editCustomRoles`\" pulumi-lang-dotnet=\"`EditCustomRoles`\" pulumi-lang-go=\"`editCustomRoles`\" pulumi-lang-python=\"`edit_custom_roles`\" pulumi-lang-yaml=\"`editCustomRoles`\" pulumi-lang-java=\"`editCustomRoles`\"\u003e`editCustomRoles`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editDeploymentPermissions`\" pulumi-lang-dotnet=\"`EditDeploymentPermissions`\" pulumi-lang-go=\"`editDeploymentPermissions`\" pulumi-lang-python=\"`edit_deployment_permissions`\" pulumi-lang-yaml=\"`editDeploymentPermissions`\" pulumi-lang-java=\"`editDeploymentPermissions`\"\u003e`editDeploymentPermissions`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editDeploymentSettings`\" pulumi-lang-dotnet=\"`EditDeploymentSettings`\" pulumi-lang-go=\"`editDeploymentSettings`\" pulumi-lang-python=\"`edit_deployment_settings`\" pulumi-lang-yaml=\"`editDeploymentSettings`\" pulumi-lang-java=\"`editDeploymentSettings`\"\u003e`editDeploymentSettings`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editDynamicPartitions`\" pulumi-lang-dotnet=\"`EditDynamicPartitions`\" pulumi-lang-go=\"`editDynamicPartitions`\" pulumi-lang-python=\"`edit_dynamic_partitions`\" pulumi-lang-yaml=\"`editDynamicPartitions`\" pulumi-lang-java=\"`editDynamicPartitions`\"\u003e`editDynamicPartitions`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editExternalAssetConnections`\" pulumi-lang-dotnet=\"`EditExternalAssetConnections`\" pulumi-lang-go=\"`editExternalAssetConnections`\" pulumi-lang-python=\"`edit_external_asset_connections`\" pulumi-lang-yaml=\"`editExternalAssetConnections`\" pulumi-lang-java=\"`editExternalAssetConnections`\"\u003e`editExternalAssetConnections`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editInsightsMetrics`\" pulumi-lang-dotnet=\"`EditInsightsMetrics`\" pulumi-lang-go=\"`editInsightsMetrics`\" pulumi-lang-python=\"`edit_insights_metrics`\" pulumi-lang-yaml=\"`editInsightsMetrics`\" pulumi-lang-java=\"`editInsightsMetrics`\"\u003e`editInsightsMetrics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editIssues`\" pulumi-lang-dotnet=\"`EditIssues`\" pulumi-lang-go=\"`editIssues`\" pulumi-lang-python=\"`edit_issues`\" pulumi-lang-yaml=\"`editIssues`\" pulumi-lang-java=\"`editIssues`\"\u003e`editIssues`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editSecrets`\" pulumi-lang-dotnet=\"`EditSecrets`\" pulumi-lang-go=\"`editSecrets`\" pulumi-lang-python=\"`edit_secrets`\" pulumi-lang-yaml=\"`editSecrets`\" pulumi-lang-java=\"`editSecrets`\"\u003e`editSecrets`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editSensorCursors`\" pulumi-lang-dotnet=\"`EditSensorCursors`\" pulumi-lang-go=\"`editSensorCursors`\" pulumi-lang-python=\"`edit_sensor_cursors`\" pulumi-lang-yaml=\"`editSensorCursors`\" pulumi-lang-java=\"`editSensorCursors`\"\u003e`editSensorCursors`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editUsersAndTeams`\" pulumi-lang-dotnet=\"`EditUsersAndTeams`\" pulumi-lang-go=\"`editUsersAndTeams`\" pulumi-lang-python=\"`edit_users_and_teams`\" pulumi-lang-yaml=\"`editUsersAndTeams`\" pulumi-lang-java=\"`editUsersAndTeams`\"\u003e`editUsersAndTeams`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageBilling`\" pulumi-lang-dotnet=\"`ManageBilling`\" pulumi-lang-go=\"`manageBilling`\" pulumi-lang-python=\"`manage_billing`\" pulumi-lang-yaml=\"`manageBilling`\" pulumi-lang-java=\"`manageBilling`\"\u003e`manageBilling`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageBranchDeployments`\" pulumi-lang-dotnet=\"`ManageBranchDeployments`\" pulumi-lang-go=\"`manageBranchDeployments`\" pulumi-lang-python=\"`manage_branch_deployments`\" pulumi-lang-yaml=\"`manageBranchDeployments`\" pulumi-lang-java=\"`manageBranchDeployments`\"\u003e`manageBranchDeployments`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageFullDeployments`\" pulumi-lang-dotnet=\"`ManageFullDeployments`\" pulumi-lang-go=\"`manageFullDeployments`\" pulumi-lang-python=\"`manage_full_deployments`\" pulumi-lang-yaml=\"`manageFullDeployments`\" pulumi-lang-java=\"`manageFullDeployments`\"\u003e`manageFullDeployments`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageServiceUsers`\" pulumi-lang-dotnet=\"`ManageServiceUsers`\" pulumi-lang-go=\"`manageServiceUsers`\" pulumi-lang-python=\"`manage_service_users`\" pulumi-lang-yaml=\"`manageServiceUsers`\" pulumi-lang-java=\"`manageServiceUsers`\"\u003e`manageServiceUsers`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageSsoAndScim`\" pulumi-lang-dotnet=\"`ManageSsoAndScim`\" pulumi-lang-go=\"`manageSsoAndScim`\" pulumi-lang-python=\"`manage_sso_and_scim`\" pulumi-lang-yaml=\"`manageSsoAndScim`\" pulumi-lang-java=\"`manageSsoAndScim`\"\u003e`manageSsoAndScim`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readAndEditAgentTokens`\" pulumi-lang-dotnet=\"`ReadAndEditAgentTokens`\" pulumi-lang-go=\"`readAndEditAgentTokens`\" pulumi-lang-python=\"`read_and_edit_agent_tokens`\" pulumi-lang-yaml=\"`readAndEditAgentTokens`\" pulumi-lang-java=\"`readAndEditAgentTokens`\"\u003e`readAndEditAgentTokens`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readAndEditAllUserTokens`\" pulumi-lang-dotnet=\"`ReadAndEditAllUserTokens`\" pulumi-lang-go=\"`readAndEditAllUserTokens`\" pulumi-lang-python=\"`read_and_edit_all_user_tokens`\" pulumi-lang-yaml=\"`readAndEditAllUserTokens`\" pulumi-lang-java=\"`readAndEditAllUserTokens`\"\u003e`readAndEditAllUserTokens`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readAuditLog`\" pulumi-lang-dotnet=\"`ReadAuditLog`\" pulumi-lang-go=\"`readAuditLog`\" pulumi-lang-python=\"`read_audit_log`\" pulumi-lang-yaml=\"`readAuditLog`\" pulumi-lang-java=\"`readAuditLog`\"\u003e`readAuditLog`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readSecretValues`\" pulumi-lang-dotnet=\"`ReadSecretValues`\" pulumi-lang-go=\"`readSecretValues`\" pulumi-lang-python=\"`read_secret_values`\" pulumi-lang-yaml=\"`readSecretValues`\" pulumi-lang-java=\"`readSecretValues`\"\u003e`readSecretValues`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`redeployCodeLocations`\" pulumi-lang-dotnet=\"`RedeployCodeLocations`\" pulumi-lang-go=\"`redeployCodeLocations`\" pulumi-lang-python=\"`redeploy_code_locations`\" pulumi-lang-yaml=\"`redeployCodeLocations`\" pulumi-lang-java=\"`redeployCodeLocations`\"\u003e`redeployCodeLocations`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`reportAssetEvents`\" pulumi-lang-dotnet=\"`ReportAssetEvents`\" pulumi-lang-go=\"`reportAssetEvents`\" pulumi-lang-python=\"`report_asset_events`\" pulumi-lang-yaml=\"`reportAssetEvents`\" pulumi-lang-java=\"`reportAssetEvents`\"\u003e`reportAssetEvents`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`startAndStopRuns`\" pulumi-lang-dotnet=\"`StartAndStopRuns`\" pulumi-lang-go=\"`startAndStopRuns`\" pulumi-lang-python=\"`start_and_stop_runs`\" pulumi-lang-yaml=\"`startAndStopRuns`\" pulumi-lang-java=\"`startAndStopRuns`\"\u003e`startAndStopRuns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`toggleSchedules`\" pulumi-lang-dotnet=\"`ToggleSchedules`\" pulumi-lang-go=\"`toggleSchedules`\" pulumi-lang-python=\"`toggle_schedules`\" pulumi-lang-yaml=\"`toggleSchedules`\" pulumi-lang-java=\"`toggleSchedules`\"\u003e`toggleSchedules`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`toggleSensors`\" pulumi-lang-dotnet=\"`ToggleSensors`\" pulumi-lang-go=\"`toggleSensors`\" pulumi-lang-python=\"`toggle_sensors`\" pulumi-lang-yaml=\"`toggleSensors`\" pulumi-lang-java=\"`toggleSensors`\"\u003e`toggleSensors`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wipeAssets`\" pulumi-lang-dotnet=\"`WipeAssets`\" pulumi-lang-go=\"`wipeAssets`\" pulumi-lang-python=\"`wipe_assets`\" pulumi-lang-yaml=\"`wipeAssets`\" pulumi-lang-java=\"`wipeAssets`\"\u003e`wipeAssets`\u003c/span\u003e.\n"
                 },
                 "roleType": {
                     "type": "string",
-                    "description": "The scope of the role: deployment or organization. Changing this forces a new resource.\n"
+                    "description": "The scope of the role. Changing this forces a new resource. Valid values: \u003cspan pulumi-lang-nodejs=\"`deployment`\" pulumi-lang-dotnet=\"`Deployment`\" pulumi-lang-go=\"`deployment`\" pulumi-lang-python=\"`deployment`\" pulumi-lang-yaml=\"`deployment`\" pulumi-lang-java=\"`deployment`\"\u003e`deployment`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`organization`\" pulumi-lang-dotnet=\"`Organization`\" pulumi-lang-go=\"`organization`\" pulumi-lang-python=\"`organization`\" pulumi-lang-yaml=\"`organization`\" pulumi-lang-java=\"`organization`\"\u003e`organization`\u003c/span\u003e.\n"
                 }
             },
             "requiredInputs": [
@@ -2352,11 +2671,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The permissions granted by this role. At least one permission is required.\n"
+                        "description": "The permissions granted by this role. At least one permission is required. Valid values: \u003cspan pulumi-lang-nodejs=\"`deleteRuns`\" pulumi-lang-dotnet=\"`DeleteRuns`\" pulumi-lang-go=\"`deleteRuns`\" pulumi-lang-python=\"`delete_runs`\" pulumi-lang-yaml=\"`deleteRuns`\" pulumi-lang-java=\"`deleteRuns`\"\u003e`deleteRuns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editAlerts`\" pulumi-lang-dotnet=\"`EditAlerts`\" pulumi-lang-go=\"`editAlerts`\" pulumi-lang-python=\"`edit_alerts`\" pulumi-lang-yaml=\"`editAlerts`\" pulumi-lang-java=\"`editAlerts`\"\u003e`editAlerts`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editAllCatalogViews`\" pulumi-lang-dotnet=\"`EditAllCatalogViews`\" pulumi-lang-go=\"`editAllCatalogViews`\" pulumi-lang-python=\"`edit_all_catalog_views`\" pulumi-lang-yaml=\"`editAllCatalogViews`\" pulumi-lang-java=\"`editAllCatalogViews`\"\u003e`editAllCatalogViews`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editCodeLocations`\" pulumi-lang-dotnet=\"`EditCodeLocations`\" pulumi-lang-go=\"`editCodeLocations`\" pulumi-lang-python=\"`edit_code_locations`\" pulumi-lang-yaml=\"`editCodeLocations`\" pulumi-lang-java=\"`editCodeLocations`\"\u003e`editCodeLocations`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editConcurrencyLimits`\" pulumi-lang-dotnet=\"`EditConcurrencyLimits`\" pulumi-lang-go=\"`editConcurrencyLimits`\" pulumi-lang-python=\"`edit_concurrency_limits`\" pulumi-lang-yaml=\"`editConcurrencyLimits`\" pulumi-lang-java=\"`editConcurrencyLimits`\"\u003e`editConcurrencyLimits`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editCustomRoles`\" pulumi-lang-dotnet=\"`EditCustomRoles`\" pulumi-lang-go=\"`editCustomRoles`\" pulumi-lang-python=\"`edit_custom_roles`\" pulumi-lang-yaml=\"`editCustomRoles`\" pulumi-lang-java=\"`editCustomRoles`\"\u003e`editCustomRoles`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editDeploymentPermissions`\" pulumi-lang-dotnet=\"`EditDeploymentPermissions`\" pulumi-lang-go=\"`editDeploymentPermissions`\" pulumi-lang-python=\"`edit_deployment_permissions`\" pulumi-lang-yaml=\"`editDeploymentPermissions`\" pulumi-lang-java=\"`editDeploymentPermissions`\"\u003e`editDeploymentPermissions`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editDeploymentSettings`\" pulumi-lang-dotnet=\"`EditDeploymentSettings`\" pulumi-lang-go=\"`editDeploymentSettings`\" pulumi-lang-python=\"`edit_deployment_settings`\" pulumi-lang-yaml=\"`editDeploymentSettings`\" pulumi-lang-java=\"`editDeploymentSettings`\"\u003e`editDeploymentSettings`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editDynamicPartitions`\" pulumi-lang-dotnet=\"`EditDynamicPartitions`\" pulumi-lang-go=\"`editDynamicPartitions`\" pulumi-lang-python=\"`edit_dynamic_partitions`\" pulumi-lang-yaml=\"`editDynamicPartitions`\" pulumi-lang-java=\"`editDynamicPartitions`\"\u003e`editDynamicPartitions`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editExternalAssetConnections`\" pulumi-lang-dotnet=\"`EditExternalAssetConnections`\" pulumi-lang-go=\"`editExternalAssetConnections`\" pulumi-lang-python=\"`edit_external_asset_connections`\" pulumi-lang-yaml=\"`editExternalAssetConnections`\" pulumi-lang-java=\"`editExternalAssetConnections`\"\u003e`editExternalAssetConnections`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editInsightsMetrics`\" pulumi-lang-dotnet=\"`EditInsightsMetrics`\" pulumi-lang-go=\"`editInsightsMetrics`\" pulumi-lang-python=\"`edit_insights_metrics`\" pulumi-lang-yaml=\"`editInsightsMetrics`\" pulumi-lang-java=\"`editInsightsMetrics`\"\u003e`editInsightsMetrics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editIssues`\" pulumi-lang-dotnet=\"`EditIssues`\" pulumi-lang-go=\"`editIssues`\" pulumi-lang-python=\"`edit_issues`\" pulumi-lang-yaml=\"`editIssues`\" pulumi-lang-java=\"`editIssues`\"\u003e`editIssues`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editSecrets`\" pulumi-lang-dotnet=\"`EditSecrets`\" pulumi-lang-go=\"`editSecrets`\" pulumi-lang-python=\"`edit_secrets`\" pulumi-lang-yaml=\"`editSecrets`\" pulumi-lang-java=\"`editSecrets`\"\u003e`editSecrets`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editSensorCursors`\" pulumi-lang-dotnet=\"`EditSensorCursors`\" pulumi-lang-go=\"`editSensorCursors`\" pulumi-lang-python=\"`edit_sensor_cursors`\" pulumi-lang-yaml=\"`editSensorCursors`\" pulumi-lang-java=\"`editSensorCursors`\"\u003e`editSensorCursors`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`editUsersAndTeams`\" pulumi-lang-dotnet=\"`EditUsersAndTeams`\" pulumi-lang-go=\"`editUsersAndTeams`\" pulumi-lang-python=\"`edit_users_and_teams`\" pulumi-lang-yaml=\"`editUsersAndTeams`\" pulumi-lang-java=\"`editUsersAndTeams`\"\u003e`editUsersAndTeams`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageBilling`\" pulumi-lang-dotnet=\"`ManageBilling`\" pulumi-lang-go=\"`manageBilling`\" pulumi-lang-python=\"`manage_billing`\" pulumi-lang-yaml=\"`manageBilling`\" pulumi-lang-java=\"`manageBilling`\"\u003e`manageBilling`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageBranchDeployments`\" pulumi-lang-dotnet=\"`ManageBranchDeployments`\" pulumi-lang-go=\"`manageBranchDeployments`\" pulumi-lang-python=\"`manage_branch_deployments`\" pulumi-lang-yaml=\"`manageBranchDeployments`\" pulumi-lang-java=\"`manageBranchDeployments`\"\u003e`manageBranchDeployments`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageFullDeployments`\" pulumi-lang-dotnet=\"`ManageFullDeployments`\" pulumi-lang-go=\"`manageFullDeployments`\" pulumi-lang-python=\"`manage_full_deployments`\" pulumi-lang-yaml=\"`manageFullDeployments`\" pulumi-lang-java=\"`manageFullDeployments`\"\u003e`manageFullDeployments`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageServiceUsers`\" pulumi-lang-dotnet=\"`ManageServiceUsers`\" pulumi-lang-go=\"`manageServiceUsers`\" pulumi-lang-python=\"`manage_service_users`\" pulumi-lang-yaml=\"`manageServiceUsers`\" pulumi-lang-java=\"`manageServiceUsers`\"\u003e`manageServiceUsers`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manageSsoAndScim`\" pulumi-lang-dotnet=\"`ManageSsoAndScim`\" pulumi-lang-go=\"`manageSsoAndScim`\" pulumi-lang-python=\"`manage_sso_and_scim`\" pulumi-lang-yaml=\"`manageSsoAndScim`\" pulumi-lang-java=\"`manageSsoAndScim`\"\u003e`manageSsoAndScim`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readAndEditAgentTokens`\" pulumi-lang-dotnet=\"`ReadAndEditAgentTokens`\" pulumi-lang-go=\"`readAndEditAgentTokens`\" pulumi-lang-python=\"`read_and_edit_agent_tokens`\" pulumi-lang-yaml=\"`readAndEditAgentTokens`\" pulumi-lang-java=\"`readAndEditAgentTokens`\"\u003e`readAndEditAgentTokens`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readAndEditAllUserTokens`\" pulumi-lang-dotnet=\"`ReadAndEditAllUserTokens`\" pulumi-lang-go=\"`readAndEditAllUserTokens`\" pulumi-lang-python=\"`read_and_edit_all_user_tokens`\" pulumi-lang-yaml=\"`readAndEditAllUserTokens`\" pulumi-lang-java=\"`readAndEditAllUserTokens`\"\u003e`readAndEditAllUserTokens`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readAuditLog`\" pulumi-lang-dotnet=\"`ReadAuditLog`\" pulumi-lang-go=\"`readAuditLog`\" pulumi-lang-python=\"`read_audit_log`\" pulumi-lang-yaml=\"`readAuditLog`\" pulumi-lang-java=\"`readAuditLog`\"\u003e`readAuditLog`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readSecretValues`\" pulumi-lang-dotnet=\"`ReadSecretValues`\" pulumi-lang-go=\"`readSecretValues`\" pulumi-lang-python=\"`read_secret_values`\" pulumi-lang-yaml=\"`readSecretValues`\" pulumi-lang-java=\"`readSecretValues`\"\u003e`readSecretValues`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`redeployCodeLocations`\" pulumi-lang-dotnet=\"`RedeployCodeLocations`\" pulumi-lang-go=\"`redeployCodeLocations`\" pulumi-lang-python=\"`redeploy_code_locations`\" pulumi-lang-yaml=\"`redeployCodeLocations`\" pulumi-lang-java=\"`redeployCodeLocations`\"\u003e`redeployCodeLocations`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`reportAssetEvents`\" pulumi-lang-dotnet=\"`ReportAssetEvents`\" pulumi-lang-go=\"`reportAssetEvents`\" pulumi-lang-python=\"`report_asset_events`\" pulumi-lang-yaml=\"`reportAssetEvents`\" pulumi-lang-java=\"`reportAssetEvents`\"\u003e`reportAssetEvents`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`startAndStopRuns`\" pulumi-lang-dotnet=\"`StartAndStopRuns`\" pulumi-lang-go=\"`startAndStopRuns`\" pulumi-lang-python=\"`start_and_stop_runs`\" pulumi-lang-yaml=\"`startAndStopRuns`\" pulumi-lang-java=\"`startAndStopRuns`\"\u003e`startAndStopRuns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`toggleSchedules`\" pulumi-lang-dotnet=\"`ToggleSchedules`\" pulumi-lang-go=\"`toggleSchedules`\" pulumi-lang-python=\"`toggle_schedules`\" pulumi-lang-yaml=\"`toggleSchedules`\" pulumi-lang-java=\"`toggleSchedules`\"\u003e`toggleSchedules`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`toggleSensors`\" pulumi-lang-dotnet=\"`ToggleSensors`\" pulumi-lang-go=\"`toggleSensors`\" pulumi-lang-python=\"`toggle_sensors`\" pulumi-lang-yaml=\"`toggleSensors`\" pulumi-lang-java=\"`toggleSensors`\"\u003e`toggleSensors`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wipeAssets`\" pulumi-lang-dotnet=\"`WipeAssets`\" pulumi-lang-go=\"`wipeAssets`\" pulumi-lang-python=\"`wipe_assets`\" pulumi-lang-yaml=\"`wipeAssets`\" pulumi-lang-java=\"`wipeAssets`\"\u003e`wipeAssets`\u003c/span\u003e.\n"
                     },
                     "roleType": {
                         "type": "string",
-                        "description": "The scope of the role: deployment or organization. Changing this forces a new resource.\n"
+                        "description": "The scope of the role. Changing this forces a new resource. Valid values: \u003cspan pulumi-lang-nodejs=\"`deployment`\" pulumi-lang-dotnet=\"`Deployment`\" pulumi-lang-go=\"`deployment`\" pulumi-lang-python=\"`deployment`\" pulumi-lang-yaml=\"`deployment`\" pulumi-lang-java=\"`deployment`\"\u003e`deployment`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`organization`\" pulumi-lang-dotnet=\"`Organization`\" pulumi-lang-go=\"`organization`\" pulumi-lang-python=\"`organization`\" pulumi-lang-yaml=\"`organization`\" pulumi-lang-java=\"`organization`\"\u003e`organization`\u003c/span\u003e.\n"
                     }
                 },
                 "type": "object"
@@ -2573,6 +2892,27 @@
         "dagsterplus:index/serviceUser:ServiceUser": {
             "description": "Manages a Dagster+ service user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst ciBot = new dagsterplus.ServiceUser(\"ci_bot\", {\n    name: \"ci-bot\",\n    description: \"Service user for CI/CD pipelines\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nci_bot = dagsterplus.ServiceUser(\"ci_bot\",\n    name=\"ci-bot\",\n    description=\"Service user for CI/CD pipelines\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ciBot = new Dagsterplus.Index.ServiceUser(\"ci_bot\", new()\n    {\n        Name = \"ci-bot\",\n        Description = \"Service user for CI/CD pipelines\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewServiceUser(ctx, \"ci_bot\", \u0026dagsterplus.ServiceUserArgs{\n\t\t\tName:        pulumi.String(\"ci-bot\"),\n\t\t\tDescription: pulumi.String(\"Service user for CI/CD pipelines\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.ServiceUser;\nimport com.pulumi.dagsterplus.ServiceUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ciBot = new ServiceUser(\"ciBot\", ServiceUserArgs.builder()\n            .name(\"ci-bot\")\n            .description(\"Service user for CI/CD pipelines\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ciBot:\n    type: dagsterplus:ServiceUser\n    name: ci_bot\n    properties:\n      name: ci-bot\n      description: Service user for CI/CD pipelines\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport a service user by its server-assigned ID\n\n```sh\n$ pulumi import dagsterplus:index/serviceUser:ServiceUser ci_bot \u003cservice-user-id\u003e\n```\n\n",
             "properties": {
+                "allBranchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/ServiceUserAllBranchDeploymentsGrant:ServiceUserAllBranchDeploymentsGrant"
+                    },
+                    "description": "Permission grant for the service user across all branch deployments. At most one block is allowed.\n"
+                },
+                "branchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/ServiceUserBranchDeploymentsGrant:ServiceUserBranchDeploymentsGrant"
+                    },
+                    "description": "Permission grant across all branch deployments of a specific parent (full) deployment. One block per parent deployment.\n"
+                },
+                "deploymentGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/ServiceUserDeploymentGrant:ServiceUserDeploymentGrant"
+                    },
+                    "description": "Deployment-level permission grant for the service user. One block per deployment.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "An optional description for the service user.\n"
@@ -2580,6 +2920,13 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the service user.\n"
+                },
+                "organizationGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/ServiceUserOrganizationGrant:ServiceUserOrganizationGrant"
+                    },
+                    "description": "Organization-level permission grant for the service user. At most one block is allowed.\n"
                 }
             },
             "required": [
@@ -2587,6 +2934,27 @@
                 "name"
             ],
             "inputProperties": {
+                "allBranchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/ServiceUserAllBranchDeploymentsGrant:ServiceUserAllBranchDeploymentsGrant"
+                    },
+                    "description": "Permission grant for the service user across all branch deployments. At most one block is allowed.\n"
+                },
+                "branchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/ServiceUserBranchDeploymentsGrant:ServiceUserBranchDeploymentsGrant"
+                    },
+                    "description": "Permission grant across all branch deployments of a specific parent (full) deployment. One block per parent deployment.\n"
+                },
+                "deploymentGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/ServiceUserDeploymentGrant:ServiceUserDeploymentGrant"
+                    },
+                    "description": "Deployment-level permission grant for the service user. One block per deployment.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "An optional description for the service user.\n"
@@ -2594,6 +2962,13 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the service user.\n"
+                },
+                "organizationGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/ServiceUserOrganizationGrant:ServiceUserOrganizationGrant"
+                    },
+                    "description": "Organization-level permission grant for the service user. At most one block is allowed.\n"
                 }
             },
             "requiredInputs": [
@@ -2602,6 +2977,27 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ServiceUser resources.\n",
                 "properties": {
+                    "allBranchDeploymentsGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dagsterplus:index/ServiceUserAllBranchDeploymentsGrant:ServiceUserAllBranchDeploymentsGrant"
+                        },
+                        "description": "Permission grant for the service user across all branch deployments. At most one block is allowed.\n"
+                    },
+                    "branchDeploymentsGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dagsterplus:index/ServiceUserBranchDeploymentsGrant:ServiceUserBranchDeploymentsGrant"
+                        },
+                        "description": "Permission grant across all branch deployments of a specific parent (full) deployment. One block per parent deployment.\n"
+                    },
+                    "deploymentGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dagsterplus:index/ServiceUserDeploymentGrant:ServiceUserDeploymentGrant"
+                        },
+                        "description": "Deployment-level permission grant for the service user. One block per deployment.\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "An optional description for the service user.\n"
@@ -2609,6 +3005,282 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the service user.\n"
+                    },
+                    "organizationGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dagsterplus:index/ServiceUserOrganizationGrant:ServiceUserOrganizationGrant"
+                        },
+                        "description": "Organization-level permission grant for the service user. At most one block is allowed.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dagsterplus:index/serviceUserAllBranchDeploymentsGrant:ServiceUserAllBranchDeploymentsGrant": {
+            "description": "Manages a permission grant for a Dagster+ service user across all branch deployments.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst ciBot = new dagsterplus.ServiceUserAllBranchDeploymentsGrant(\"ci_bot\", {\n    serviceUserId: ciBotDagsterplusServiceUser.id,\n    grant: \"LAUNCHER\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nci_bot = dagsterplus.ServiceUserAllBranchDeploymentsGrant(\"ci_bot\",\n    service_user_id=ci_bot_dagsterplus_service_user[\"id\"],\n    grant=\"LAUNCHER\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ciBot = new Dagsterplus.Index.ServiceUserAllBranchDeploymentsGrant(\"ci_bot\", new()\n    {\n        ServiceUserId = ciBotDagsterplusServiceUser.Id,\n        Grant = \"LAUNCHER\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewServiceUserAllBranchDeploymentsGrant(ctx, \"ci_bot\", \u0026dagsterplus.ServiceUserAllBranchDeploymentsGrantArgs{\n\t\t\tServiceUserId: pulumi.Any(ciBotDagsterplusServiceUser.Id),\n\t\t\tGrant:         pulumi.String(\"LAUNCHER\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.ServiceUserAllBranchDeploymentsGrant;\nimport com.pulumi.dagsterplus.ServiceUserAllBranchDeploymentsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ciBot = new ServiceUserAllBranchDeploymentsGrant(\"ciBot\", ServiceUserAllBranchDeploymentsGrantArgs.builder()\n            .serviceUserId(ciBotDagsterplusServiceUser.id())\n            .grant(\"LAUNCHER\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ciBot:\n    type: dagsterplus:ServiceUserAllBranchDeploymentsGrant\n    name: ci_bot\n    properties:\n      serviceUserId: ${ciBotDagsterplusServiceUser.id}\n      grant: LAUNCHER\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport an all-branch-deployments grant for a service user using the service_user_id.\n\n```sh\n$ pulumi import dagsterplus:index/serviceUserAllBranchDeploymentsGrant:ServiceUserAllBranchDeploymentsGrant example \u003cservice_user_id\u003e\n```\n\n",
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "serviceUserId": {
+                    "type": "string",
+                    "description": "The ID of the service user to grant access.\n"
+                }
+            },
+            "required": [
+                "serviceUserId"
+            ],
+            "inputProperties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "serviceUserId": {
+                    "type": "string",
+                    "description": "The ID of the service user to grant access.\n"
+                }
+            },
+            "requiredInputs": [
+                "serviceUserId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServiceUserAllBranchDeploymentsGrant resources.\n",
+                "properties": {
+                    "customRoleId": {
+                        "type": "string",
+                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    },
+                    "grant": {
+                        "type": "string",
+                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    },
+                    "serviceUserId": {
+                        "type": "string",
+                        "description": "The ID of the service user to grant access.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dagsterplus:index/serviceUserBranchDeploymentsGrant:ServiceUserBranchDeploymentsGrant": {
+            "description": "Manages a permission grant for a Dagster+ service user across all branch deployments of a specific parent (full) deployment.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst ciBotProdBranches = new dagsterplus.ServiceUserBranchDeploymentsGrant(\"ci_bot_prod_branches\", {\n    serviceUserId: ciBot.id,\n    parentDeployment: \"prod\",\n    grant: \"EDITOR\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nci_bot_prod_branches = dagsterplus.ServiceUserBranchDeploymentsGrant(\"ci_bot_prod_branches\",\n    service_user_id=ci_bot[\"id\"],\n    parent_deployment=\"prod\",\n    grant=\"EDITOR\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ciBotProdBranches = new Dagsterplus.Index.ServiceUserBranchDeploymentsGrant(\"ci_bot_prod_branches\", new()\n    {\n        ServiceUserId = ciBot.Id,\n        ParentDeployment = \"prod\",\n        Grant = \"EDITOR\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewServiceUserBranchDeploymentsGrant(ctx, \"ci_bot_prod_branches\", \u0026dagsterplus.ServiceUserBranchDeploymentsGrantArgs{\n\t\t\tServiceUserId:    pulumi.Any(ciBot.Id),\n\t\t\tParentDeployment: pulumi.String(\"prod\"),\n\t\t\tGrant:            pulumi.String(\"EDITOR\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.ServiceUserBranchDeploymentsGrant;\nimport com.pulumi.dagsterplus.ServiceUserBranchDeploymentsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ciBotProdBranches = new ServiceUserBranchDeploymentsGrant(\"ciBotProdBranches\", ServiceUserBranchDeploymentsGrantArgs.builder()\n            .serviceUserId(ciBot.id())\n            .parentDeployment(\"prod\")\n            .grant(\"EDITOR\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ciBotProdBranches:\n    type: dagsterplus:ServiceUserBranchDeploymentsGrant\n    name: ci_bot_prod_branches\n    properties:\n      serviceUserId: ${ciBot.id}\n      parentDeployment: prod\n      grant: EDITOR\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport using {service_user_id}/{parent_deployment}.\n\n```sh\n$ pulumi import dagsterplus:index/serviceUserBranchDeploymentsGrant:ServiceUserBranchDeploymentsGrant example \u003cservice_user_id\u003e/\u003cparent_deployment_name\u003e\n```\n\n",
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "parentDeployment": {
+                    "type": "string",
+                    "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                },
+                "serviceUserId": {
+                    "type": "string",
+                    "description": "The ID of the service user to grant access.\n"
+                }
+            },
+            "required": [
+                "parentDeployment",
+                "serviceUserId"
+            ],
+            "inputProperties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "parentDeployment": {
+                    "type": "string",
+                    "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                },
+                "serviceUserId": {
+                    "type": "string",
+                    "description": "The ID of the service user to grant access.\n"
+                }
+            },
+            "requiredInputs": [
+                "parentDeployment",
+                "serviceUserId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServiceUserBranchDeploymentsGrant resources.\n",
+                "properties": {
+                    "customRoleId": {
+                        "type": "string",
+                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    },
+                    "grant": {
+                        "type": "string",
+                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    },
+                    "parentDeployment": {
+                        "type": "string",
+                        "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                    },
+                    "serviceUserId": {
+                        "type": "string",
+                        "description": "The ID of the service user to grant access.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dagsterplus:index/serviceUserDeploymentGrant:ServiceUserDeploymentGrant": {
+            "description": "Manages a deployment-level permission grant for a Dagster+ service user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst ciBot = new dagsterplus.ServiceUser(\"ci_bot\", {\n    name: \"ci-bot\",\n    description: \"Service user for CI/CD pipelines\",\n});\nconst ciBotProd = new dagsterplus.ServiceUserDeploymentGrant(\"ci_bot_prod\", {\n    serviceUserId: ciBot.id,\n    deployment: \"prod\",\n    grant: \"LAUNCHER\",\n});\n// Grant with per-code-location overrides\nconst ciBotStaging = new dagsterplus.ServiceUserDeploymentGrant(\"ci_bot_staging\", {\n    serviceUserId: ciBot.id,\n    deployment: \"staging\",\n    grant: \"VIEWER\",\n    locationGrants: [{\n        locationName: \"data-platform\",\n        grant: \"EDITOR\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nci_bot = dagsterplus.ServiceUser(\"ci_bot\",\n    name=\"ci-bot\",\n    description=\"Service user for CI/CD pipelines\")\nci_bot_prod = dagsterplus.ServiceUserDeploymentGrant(\"ci_bot_prod\",\n    service_user_id=ci_bot.id,\n    deployment=\"prod\",\n    grant=\"LAUNCHER\")\n# Grant with per-code-location overrides\nci_bot_staging = dagsterplus.ServiceUserDeploymentGrant(\"ci_bot_staging\",\n    service_user_id=ci_bot.id,\n    deployment=\"staging\",\n    grant=\"VIEWER\",\n    location_grants=[{\n        \"location_name\": \"data-platform\",\n        \"grant\": \"EDITOR\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ciBot = new Dagsterplus.Index.ServiceUser(\"ci_bot\", new()\n    {\n        Name = \"ci-bot\",\n        Description = \"Service user for CI/CD pipelines\",\n    });\n\n    var ciBotProd = new Dagsterplus.Index.ServiceUserDeploymentGrant(\"ci_bot_prod\", new()\n    {\n        ServiceUserId = ciBot.Id,\n        Deployment = \"prod\",\n        Grant = \"LAUNCHER\",\n    });\n\n    // Grant with per-code-location overrides\n    var ciBotStaging = new Dagsterplus.Index.ServiceUserDeploymentGrant(\"ci_bot_staging\", new()\n    {\n        ServiceUserId = ciBot.Id,\n        Deployment = \"staging\",\n        Grant = \"VIEWER\",\n        LocationGrants = new[]\n        {\n            new Dagsterplus.Inputs.ServiceUserDeploymentGrantLocationGrantArgs\n            {\n                LocationName = \"data-platform\",\n                Grant = \"EDITOR\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus/index/serviceuserdeploymentgrantlocationgrant\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tciBot, err := dagsterplus.NewServiceUser(ctx, \"ci_bot\", \u0026dagsterplus.ServiceUserArgs{\n\t\t\tName:        pulumi.String(\"ci-bot\"),\n\t\t\tDescription: pulumi.String(\"Service user for CI/CD pipelines\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dagsterplus.NewServiceUserDeploymentGrant(ctx, \"ci_bot_prod\", \u0026dagsterplus.ServiceUserDeploymentGrantArgs{\n\t\t\tServiceUserId: ciBot.ID(),\n\t\t\tDeployment:    pulumi.String(\"prod\"),\n\t\t\tGrant:         pulumi.String(\"LAUNCHER\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Grant with per-code-location overrides\n\t\t_, err = dagsterplus.NewServiceUserDeploymentGrant(ctx, \"ci_bot_staging\", \u0026dagsterplus.ServiceUserDeploymentGrantArgs{\n\t\t\tServiceUserId: ciBot.ID(),\n\t\t\tDeployment:    pulumi.String(\"staging\"),\n\t\t\tGrant:         pulumi.String(\"VIEWER\"),\n\t\t\tLocationGrants: dagsterplus.ServiceUserDeploymentGrantLocationGrantArray{\n\t\t\t\t\u0026dagsterplus.ServiceUserDeploymentGrantLocationGrantArgs{\n\t\t\t\t\tLocationName: pulumi.String(\"data-platform\"),\n\t\t\t\t\tGrant:        pulumi.String(\"EDITOR\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.ServiceUser;\nimport com.pulumi.dagsterplus.ServiceUserArgs;\nimport com.pulumi.dagsterplus.ServiceUserDeploymentGrant;\nimport com.pulumi.dagsterplus.ServiceUserDeploymentGrantArgs;\nimport com.pulumi.dagsterplus.inputs.ServiceUserDeploymentGrantLocationGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ciBot = new ServiceUser(\"ciBot\", ServiceUserArgs.builder()\n            .name(\"ci-bot\")\n            .description(\"Service user for CI/CD pipelines\")\n            .build());\n\n        var ciBotProd = new ServiceUserDeploymentGrant(\"ciBotProd\", ServiceUserDeploymentGrantArgs.builder()\n            .serviceUserId(ciBot.id())\n            .deployment(\"prod\")\n            .grant(\"LAUNCHER\")\n            .build());\n\n        // Grant with per-code-location overrides\n        var ciBotStaging = new ServiceUserDeploymentGrant(\"ciBotStaging\", ServiceUserDeploymentGrantArgs.builder()\n            .serviceUserId(ciBot.id())\n            .deployment(\"staging\")\n            .grant(\"VIEWER\")\n            .locationGrants(ServiceUserDeploymentGrantLocationGrantArgs.builder()\n                .locationName(\"data-platform\")\n                .grant(\"EDITOR\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ciBot:\n    type: dagsterplus:ServiceUser\n    name: ci_bot\n    properties:\n      name: ci-bot\n      description: Service user for CI/CD pipelines\n  ciBotProd:\n    type: dagsterplus:ServiceUserDeploymentGrant\n    name: ci_bot_prod\n    properties:\n      serviceUserId: ${ciBot.id}\n      deployment: prod\n      grant: LAUNCHER\n  # Grant with per-code-location overrides\n  ciBotStaging:\n    type: dagsterplus:ServiceUserDeploymentGrant\n    name: ci_bot_staging\n    properties:\n      serviceUserId: ${ciBot.id}\n      deployment: staging\n      grant: VIEWER\n      locationGrants:\n        - locationName: data-platform\n          grant: EDITOR\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport using {service_user_id}/{deployment}\n\n```sh\n$ pulumi import dagsterplus:index/serviceUserDeploymentGrant:ServiceUserDeploymentGrant ci_bot_prod \u003cservice_user_id\u003e/prod\n```\n\n",
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "deployment": {
+                    "type": "string",
+                    "description": "The name of the deployment to grant access to.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "locationGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/ServiceUserDeploymentGrantLocationGrant:ServiceUserDeploymentGrantLocationGrant"
+                    },
+                    "description": "Per-code-location permission overrides within this deployment.\n"
+                },
+                "serviceUserId": {
+                    "type": "string",
+                    "description": "The ID of the service user to grant access.\n"
+                }
+            },
+            "required": [
+                "deployment",
+                "serviceUserId"
+            ],
+            "inputProperties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "deployment": {
+                    "type": "string",
+                    "description": "The name of the deployment to grant access to.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "locationGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/ServiceUserDeploymentGrantLocationGrant:ServiceUserDeploymentGrantLocationGrant"
+                    },
+                    "description": "Per-code-location permission overrides within this deployment.\n"
+                },
+                "serviceUserId": {
+                    "type": "string",
+                    "description": "The ID of the service user to grant access.\n"
+                }
+            },
+            "requiredInputs": [
+                "deployment",
+                "serviceUserId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServiceUserDeploymentGrant resources.\n",
+                "properties": {
+                    "customRoleId": {
+                        "type": "string",
+                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    },
+                    "deployment": {
+                        "type": "string",
+                        "description": "The name of the deployment to grant access to.\n"
+                    },
+                    "grant": {
+                        "type": "string",
+                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    },
+                    "locationGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dagsterplus:index/ServiceUserDeploymentGrantLocationGrant:ServiceUserDeploymentGrantLocationGrant"
+                        },
+                        "description": "Per-code-location permission overrides within this deployment.\n"
+                    },
+                    "serviceUserId": {
+                        "type": "string",
+                        "description": "The ID of the service user to grant access.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dagsterplus:index/serviceUserOrganizationGrant:ServiceUserOrganizationGrant": {
+            "description": "Manages an organization-level permission grant for a Dagster+ service user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst ciBot = new dagsterplus.ServiceUserOrganizationGrant(\"ci_bot\", {\n    serviceUserId: ciBotDagsterplusServiceUser.id,\n    grant: \"ADMIN\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nci_bot = dagsterplus.ServiceUserOrganizationGrant(\"ci_bot\",\n    service_user_id=ci_bot_dagsterplus_service_user[\"id\"],\n    grant=\"ADMIN\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ciBot = new Dagsterplus.Index.ServiceUserOrganizationGrant(\"ci_bot\", new()\n    {\n        ServiceUserId = ciBotDagsterplusServiceUser.Id,\n        Grant = \"ADMIN\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewServiceUserOrganizationGrant(ctx, \"ci_bot\", \u0026dagsterplus.ServiceUserOrganizationGrantArgs{\n\t\t\tServiceUserId: pulumi.Any(ciBotDagsterplusServiceUser.Id),\n\t\t\tGrant:         pulumi.String(\"ADMIN\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.ServiceUserOrganizationGrant;\nimport com.pulumi.dagsterplus.ServiceUserOrganizationGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ciBot = new ServiceUserOrganizationGrant(\"ciBot\", ServiceUserOrganizationGrantArgs.builder()\n            .serviceUserId(ciBotDagsterplusServiceUser.id())\n            .grant(\"ADMIN\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ciBot:\n    type: dagsterplus:ServiceUserOrganizationGrant\n    name: ci_bot\n    properties:\n      serviceUserId: ${ciBotDagsterplusServiceUser.id}\n      grant: ADMIN\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport an organization-level grant for a service user using the service_user_id.\n\n```sh\n$ pulumi import dagsterplus:index/serviceUserOrganizationGrant:ServiceUserOrganizationGrant example \u003cservice_user_id\u003e\n```\n\n",
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                },
+                "serviceUserId": {
+                    "type": "string",
+                    "description": "The ID of the service user to grant access.\n"
+                }
+            },
+            "required": [
+                "serviceUserId"
+            ],
+            "inputProperties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                },
+                "serviceUserId": {
+                    "type": "string",
+                    "description": "The ID of the service user to grant access.\n"
+                }
+            },
+            "requiredInputs": [
+                "serviceUserId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServiceUserOrganizationGrant resources.\n",
+                "properties": {
+                    "customRoleId": {
+                        "type": "string",
+                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    },
+                    "grant": {
+                        "type": "string",
+                        "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    },
+                    "serviceUserId": {
+                        "type": "string",
+                        "description": "The ID of the service user to grant access.\n"
                     }
                 },
                 "type": "object"
@@ -2623,6 +3295,13 @@
                         "$ref": "#/types/dagsterplus:index/TeamAllBranchDeploymentsGrant:TeamAllBranchDeploymentsGrant"
                     },
                     "description": "Permission grant for all branch deployments. At most one block is allowed.\n"
+                },
+                "branchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/TeamBranchDeploymentsGrant:TeamBranchDeploymentsGrant"
+                    },
+                    "description": "Permission grant for all branch deployments of a specific parent (full) deployment. One block per parent deployment.\n"
                 },
                 "deploymentGrants": {
                     "type": "array",
@@ -2660,6 +3339,13 @@
                         "$ref": "#/types/dagsterplus:index/TeamAllBranchDeploymentsGrant:TeamAllBranchDeploymentsGrant"
                     },
                     "description": "Permission grant for all branch deployments. At most one block is allowed.\n"
+                },
+                "branchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/TeamBranchDeploymentsGrant:TeamBranchDeploymentsGrant"
+                    },
+                    "description": "Permission grant for all branch deployments of a specific parent (full) deployment. One block per parent deployment.\n"
                 },
                 "deploymentGrants": {
                     "type": "array",
@@ -2700,6 +3386,13 @@
                         },
                         "description": "Permission grant for all branch deployments. At most one block is allowed.\n"
                     },
+                    "branchDeploymentsGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dagsterplus:index/TeamBranchDeploymentsGrant:TeamBranchDeploymentsGrant"
+                        },
+                        "description": "Permission grant for all branch deployments of a specific parent (full) deployment. One block per parent deployment.\n"
+                    },
                     "deploymentGrants": {
                         "type": "array",
                         "items": {
@@ -2729,6 +3422,130 @@
                 "type": "object"
             }
         },
+        "dagsterplus:index/teamAllBranchDeploymentsGrant:TeamAllBranchDeploymentsGrant": {
+            "description": "Manages a permission grant for a Dagster+ team across all branch deployments. If you manage the team with dagsterplus_team, prefer the inline\u003cspan pulumi-lang-nodejs=\" allBranchDeploymentsGrant \" pulumi-lang-dotnet=\" AllBranchDeploymentsGrant \" pulumi-lang-go=\" allBranchDeploymentsGrant \" pulumi-lang-python=\" all_branch_deployments_grant \" pulumi-lang-yaml=\" allBranchDeploymentsGrant \" pulumi-lang-java=\" allBranchDeploymentsGrant \"\u003e allBranchDeploymentsGrant \u003c/span\u003eblock instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst dataEng = new dagsterplus.TeamAllBranchDeploymentsGrant(\"data_eng\", {\n    teamId: dataEngineering.id,\n    grant: \"EDITOR\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\ndata_eng = dagsterplus.TeamAllBranchDeploymentsGrant(\"data_eng\",\n    team_id=data_engineering[\"id\"],\n    grant=\"EDITOR\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dataEng = new Dagsterplus.Index.TeamAllBranchDeploymentsGrant(\"data_eng\", new()\n    {\n        TeamId = dataEngineering.Id,\n        Grant = \"EDITOR\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewTeamAllBranchDeploymentsGrant(ctx, \"data_eng\", \u0026dagsterplus.TeamAllBranchDeploymentsGrantArgs{\n\t\t\tTeamId: pulumi.Any(dataEngineering.Id),\n\t\t\tGrant:  pulumi.String(\"EDITOR\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.TeamAllBranchDeploymentsGrant;\nimport com.pulumi.dagsterplus.TeamAllBranchDeploymentsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var dataEng = new TeamAllBranchDeploymentsGrant(\"dataEng\", TeamAllBranchDeploymentsGrantArgs.builder()\n            .teamId(dataEngineering.id())\n            .grant(\"EDITOR\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  dataEng:\n    type: dagsterplus:TeamAllBranchDeploymentsGrant\n    name: data_eng\n    properties:\n      teamId: ${dataEngineering.id}\n      grant: EDITOR\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport an all-branch-deployments grant for a team using the team ID.\n\n```sh\n$ pulumi import dagsterplus:index/teamAllBranchDeploymentsGrant:TeamAllBranchDeploymentsGrant example \u003cteam_id\u003e\n```\n\n",
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "The ID of the team to grant access.\n"
+                }
+            },
+            "required": [
+                "teamId"
+            ],
+            "inputProperties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "The ID of the team to grant access.\n"
+                }
+            },
+            "requiredInputs": [
+                "teamId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamAllBranchDeploymentsGrant resources.\n",
+                "properties": {
+                    "customRoleId": {
+                        "type": "string",
+                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    },
+                    "grant": {
+                        "type": "string",
+                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    },
+                    "teamId": {
+                        "type": "string",
+                        "description": "The ID of the team to grant access.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dagsterplus:index/teamBranchDeploymentsGrant:TeamBranchDeploymentsGrant": {
+            "description": "Manages a permission grant for a Dagster+ team across all branch deployments of a specific parent (full) deployment. If you manage the team with dagsterplus_team, prefer the inline\u003cspan pulumi-lang-nodejs=\" branchDeploymentsGrant \" pulumi-lang-dotnet=\" BranchDeploymentsGrant \" pulumi-lang-go=\" branchDeploymentsGrant \" pulumi-lang-python=\" branch_deployments_grant \" pulumi-lang-yaml=\" branchDeploymentsGrant \" pulumi-lang-java=\" branchDeploymentsGrant \"\u003e branchDeploymentsGrant \u003c/span\u003eblock instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst dataEngProdBranches = new dagsterplus.TeamBranchDeploymentsGrant(\"data_eng_prod_branches\", {\n    teamId: dataEngineering.id,\n    parentDeployment: \"prod\",\n    grant: \"EDITOR\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\ndata_eng_prod_branches = dagsterplus.TeamBranchDeploymentsGrant(\"data_eng_prod_branches\",\n    team_id=data_engineering[\"id\"],\n    parent_deployment=\"prod\",\n    grant=\"EDITOR\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dataEngProdBranches = new Dagsterplus.Index.TeamBranchDeploymentsGrant(\"data_eng_prod_branches\", new()\n    {\n        TeamId = dataEngineering.Id,\n        ParentDeployment = \"prod\",\n        Grant = \"EDITOR\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewTeamBranchDeploymentsGrant(ctx, \"data_eng_prod_branches\", \u0026dagsterplus.TeamBranchDeploymentsGrantArgs{\n\t\t\tTeamId:           pulumi.Any(dataEngineering.Id),\n\t\t\tParentDeployment: pulumi.String(\"prod\"),\n\t\t\tGrant:            pulumi.String(\"EDITOR\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.TeamBranchDeploymentsGrant;\nimport com.pulumi.dagsterplus.TeamBranchDeploymentsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var dataEngProdBranches = new TeamBranchDeploymentsGrant(\"dataEngProdBranches\", TeamBranchDeploymentsGrantArgs.builder()\n            .teamId(dataEngineering.id())\n            .parentDeployment(\"prod\")\n            .grant(\"EDITOR\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  dataEngProdBranches:\n    type: dagsterplus:TeamBranchDeploymentsGrant\n    name: data_eng_prod_branches\n    properties:\n      teamId: ${dataEngineering.id}\n      parentDeployment: prod\n      grant: EDITOR\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport using {team_id}/{parent_deployment}.\n\n```sh\n$ pulumi import dagsterplus:index/teamBranchDeploymentsGrant:TeamBranchDeploymentsGrant example \u003cteam_id\u003e/\u003cparent_deployment_name\u003e\n```\n\n",
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "parentDeployment": {
+                    "type": "string",
+                    "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "The ID of the team to grant access.\n"
+                }
+            },
+            "required": [
+                "parentDeployment",
+                "teamId"
+            ],
+            "inputProperties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "parentDeployment": {
+                    "type": "string",
+                    "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "The ID of the team to grant access.\n"
+                }
+            },
+            "requiredInputs": [
+                "parentDeployment",
+                "teamId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamBranchDeploymentsGrant resources.\n",
+                "properties": {
+                    "customRoleId": {
+                        "type": "string",
+                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    },
+                    "grant": {
+                        "type": "string",
+                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    },
+                    "parentDeployment": {
+                        "type": "string",
+                        "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                    },
+                    "teamId": {
+                        "type": "string",
+                        "description": "The ID of the team to grant access.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "dagsterplus:index/teamDeploymentGrant:TeamDeploymentGrant": {
             "description": "Manages a deployment-level permission grant for a Dagster+ team. Use this resource when the team is managed separately from its deployment permissions. If you manage the team with dagsterplus_team, prefer the inline\u003cspan pulumi-lang-nodejs=\" deploymentGrant \" pulumi-lang-dotnet=\" DeploymentGrant \" pulumi-lang-go=\" deploymentGrant \" pulumi-lang-python=\" deployment_grant \" pulumi-lang-yaml=\" deploymentGrant \" pulumi-lang-java=\" deploymentGrant \"\u003e deploymentGrant \u003c/span\u003eblock instead.\n",
             "properties": {
@@ -2742,7 +3559,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level: `VIEWER`, `LAUNCHER`, `EDITOR`, or `ADMIN`. Conflicts with custom*role*id.\n"
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationGrants": {
                     "type": "array",
@@ -2771,7 +3588,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level: `VIEWER`, `LAUNCHER`, `EDITOR`, or `ADMIN`. Conflicts with custom*role*id.\n"
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationGrants": {
                     "type": "array",
@@ -2802,7 +3619,7 @@
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Standard permission level: `VIEWER`, `LAUNCHER`, `EDITOR`, or `ADMIN`. Conflicts with custom*role*id.\n"
+                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                     },
                     "locationGrants": {
                         "type": "array",
@@ -2864,9 +3681,85 @@
                 "type": "object"
             }
         },
+        "dagsterplus:index/teamOrganizationGrant:TeamOrganizationGrant": {
+            "description": "Manages an organization-level permission grant for a Dagster+ team. Use this resource when the team is managed separately from its organization permissions. If you manage the team with dagsterplus_team, prefer the inline\u003cspan pulumi-lang-nodejs=\" organizationGrant \" pulumi-lang-dotnet=\" OrganizationGrant \" pulumi-lang-go=\" organizationGrant \" pulumi-lang-python=\" organization_grant \" pulumi-lang-yaml=\" organizationGrant \" pulumi-lang-java=\" organizationGrant \"\u003e organizationGrant \u003c/span\u003eblock instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst dataEng = new dagsterplus.TeamOrganizationGrant(\"data_eng\", {\n    teamId: dataEngineering.id,\n    grant: \"ADMIN\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\ndata_eng = dagsterplus.TeamOrganizationGrant(\"data_eng\",\n    team_id=data_engineering[\"id\"],\n    grant=\"ADMIN\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dataEng = new Dagsterplus.Index.TeamOrganizationGrant(\"data_eng\", new()\n    {\n        TeamId = dataEngineering.Id,\n        Grant = \"ADMIN\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewTeamOrganizationGrant(ctx, \"data_eng\", \u0026dagsterplus.TeamOrganizationGrantArgs{\n\t\t\tTeamId: pulumi.Any(dataEngineering.Id),\n\t\t\tGrant:  pulumi.String(\"ADMIN\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.TeamOrganizationGrant;\nimport com.pulumi.dagsterplus.TeamOrganizationGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var dataEng = new TeamOrganizationGrant(\"dataEng\", TeamOrganizationGrantArgs.builder()\n            .teamId(dataEngineering.id())\n            .grant(\"ADMIN\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  dataEng:\n    type: dagsterplus:TeamOrganizationGrant\n    name: data_eng\n    properties:\n      teamId: ${dataEngineering.id}\n      grant: ADMIN\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport an organization-level grant for a team using the team ID.\n\n```sh\n$ pulumi import dagsterplus:index/teamOrganizationGrant:TeamOrganizationGrant example \u003cteam_id\u003e\n```\n\n",
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "The ID of the team to grant access.\n"
+                }
+            },
+            "required": [
+                "teamId"
+            ],
+            "inputProperties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "The ID of the team to grant access.\n"
+                }
+            },
+            "requiredInputs": [
+                "teamId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamOrganizationGrant resources.\n",
+                "properties": {
+                    "customRoleId": {
+                        "type": "string",
+                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    },
+                    "grant": {
+                        "type": "string",
+                        "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    },
+                    "teamId": {
+                        "type": "string",
+                        "description": "The ID of the team to grant access.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "dagsterplus:index/user:User": {
             "description": "Manages a Dagster+ organization member. Invites the user on create and removes them on delete.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst alice = new dagsterplus.User(\"alice\", {email: \"alice@example.com\"});\nconst bob = new dagsterplus.User(\"bob\", {email: \"bob@example.com\"});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nalice = dagsterplus.User(\"alice\", email=\"alice@example.com\")\nbob = dagsterplus.User(\"bob\", email=\"bob@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var alice = new Dagsterplus.Index.User(\"alice\", new()\n    {\n        Email = \"alice@example.com\",\n    });\n\n    var bob = new Dagsterplus.Index.User(\"bob\", new()\n    {\n        Email = \"bob@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewUser(ctx, \"alice\", \u0026dagsterplus.UserArgs{\n\t\t\tEmail: pulumi.String(\"alice@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = dagsterplus.NewUser(ctx, \"bob\", \u0026dagsterplus.UserArgs{\n\t\t\tEmail: pulumi.String(\"bob@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.User;\nimport com.pulumi.dagsterplus.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var alice = new User(\"alice\", UserArgs.builder()\n            .email(\"alice@example.com\")\n            .build());\n\n        var bob = new User(\"bob\", UserArgs.builder()\n            .email(\"bob@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  alice:\n    type: dagsterplus:User\n    properties:\n      email: alice@example.com\n  bob:\n    type: dagsterplus:User\n    properties:\n      email: bob@example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nUsers are imported using the user ID assigned by Dagster+.\nThe user ID can be found via the Dagster+ API (ListUsers query).\nNote: the \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e attribute is set by Dagster+ after the user accepts the invite\nand is not returned on import — add it to\u003cspan pulumi-lang-nodejs=\" ignoreChanges \" pulumi-lang-dotnet=\" IgnoreChanges \" pulumi-lang-go=\" ignoreChanges \" pulumi-lang-python=\" ignore_changes \" pulumi-lang-yaml=\" ignoreChanges \" pulumi-lang-java=\" ignoreChanges \"\u003e ignoreChanges \u003c/span\u003eif needed.\n\n```sh\n$ pulumi import dagsterplus:index/user:User example \u003cuser_id\u003e\n```\n\n",
             "properties": {
+                "allBranchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/UserAllBranchDeploymentsGrant:UserAllBranchDeploymentsGrant"
+                    },
+                    "description": "Permission grant for the user across all branch deployments. At most one block is allowed.\n"
+                },
+                "branchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/UserBranchDeploymentsGrant:UserBranchDeploymentsGrant"
+                    },
+                    "description": "Permission grant across all branch deployments of a specific parent (full) deployment. One block per parent deployment.\n"
+                },
+                "deploymentGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/UserDeploymentGrant:UserDeploymentGrant"
+                    },
+                    "description": "Deployment-level permission grant for the user. One block per deployment.\n"
+                },
                 "email": {
                     "type": "string",
                     "description": "The email address of the user to invite. Changing this forces a new resource.\n"
@@ -2875,13 +3768,20 @@
                     "type": "string",
                     "description": "The display name of the user (set by Dagster+ after the user accepts the invite).\n"
                 },
+                "organizationGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/UserOrganizationGrant:UserOrganizationGrant"
+                    },
+                    "description": "Organization-level permission grant for the user. At most one block is allowed.\n"
+                },
                 "picture": {
                     "type": "string",
                     "description": "URL to the user's profile picture.\n"
                 },
                 "role": {
                     "type": "string",
-                    "description": "The organization-level role as returned by Dagster+. Cannot be set via the API at this time.\n"
+                    "description": "The organization-level role as returned by Dagster+. Read-only mirror of organization_grant.\n"
                 }
             },
             "required": [
@@ -2891,9 +3791,37 @@
                 "role"
             ],
             "inputProperties": {
+                "allBranchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/UserAllBranchDeploymentsGrant:UserAllBranchDeploymentsGrant"
+                    },
+                    "description": "Permission grant for the user across all branch deployments. At most one block is allowed.\n"
+                },
+                "branchDeploymentsGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/UserBranchDeploymentsGrant:UserBranchDeploymentsGrant"
+                    },
+                    "description": "Permission grant across all branch deployments of a specific parent (full) deployment. One block per parent deployment.\n"
+                },
+                "deploymentGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/UserDeploymentGrant:UserDeploymentGrant"
+                    },
+                    "description": "Deployment-level permission grant for the user. One block per deployment.\n"
+                },
                 "email": {
                     "type": "string",
                     "description": "The email address of the user to invite. Changing this forces a new resource.\n"
+                },
+                "organizationGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/UserOrganizationGrant:UserOrganizationGrant"
+                    },
+                    "description": "Organization-level permission grant for the user. At most one block is allowed.\n"
                 }
             },
             "requiredInputs": [
@@ -2902,6 +3830,27 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering User resources.\n",
                 "properties": {
+                    "allBranchDeploymentsGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dagsterplus:index/UserAllBranchDeploymentsGrant:UserAllBranchDeploymentsGrant"
+                        },
+                        "description": "Permission grant for the user across all branch deployments. At most one block is allowed.\n"
+                    },
+                    "branchDeploymentsGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dagsterplus:index/UserBranchDeploymentsGrant:UserBranchDeploymentsGrant"
+                        },
+                        "description": "Permission grant across all branch deployments of a specific parent (full) deployment. One block per parent deployment.\n"
+                    },
+                    "deploymentGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dagsterplus:index/UserDeploymentGrant:UserDeploymentGrant"
+                        },
+                        "description": "Deployment-level permission grant for the user. One block per deployment.\n"
+                    },
                     "email": {
                         "type": "string",
                         "description": "The email address of the user to invite. Changing this forces a new resource.\n"
@@ -2910,13 +3859,289 @@
                         "type": "string",
                         "description": "The display name of the user (set by Dagster+ after the user accepts the invite).\n"
                     },
+                    "organizationGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dagsterplus:index/UserOrganizationGrant:UserOrganizationGrant"
+                        },
+                        "description": "Organization-level permission grant for the user. At most one block is allowed.\n"
+                    },
                     "picture": {
                         "type": "string",
                         "description": "URL to the user's profile picture.\n"
                     },
                     "role": {
                         "type": "string",
-                        "description": "The organization-level role as returned by Dagster+. Cannot be set via the API at this time.\n"
+                        "description": "The organization-level role as returned by Dagster+. Read-only mirror of organization_grant.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dagsterplus:index/userAllBranchDeploymentsGrant:UserAllBranchDeploymentsGrant": {
+            "description": "Manages a permission grant for a Dagster+ user across all branch deployments.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst alice = new dagsterplus.UserAllBranchDeploymentsGrant(\"alice\", {\n    userId: aliceDagsterplusUser.id,\n    grant: \"LAUNCHER\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nalice = dagsterplus.UserAllBranchDeploymentsGrant(\"alice\",\n    user_id=alice_dagsterplus_user[\"id\"],\n    grant=\"LAUNCHER\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var alice = new Dagsterplus.Index.UserAllBranchDeploymentsGrant(\"alice\", new()\n    {\n        UserId = aliceDagsterplusUser.Id,\n        Grant = \"LAUNCHER\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewUserAllBranchDeploymentsGrant(ctx, \"alice\", \u0026dagsterplus.UserAllBranchDeploymentsGrantArgs{\n\t\t\tUserId: pulumi.Any(aliceDagsterplusUser.Id),\n\t\t\tGrant:  pulumi.String(\"LAUNCHER\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.UserAllBranchDeploymentsGrant;\nimport com.pulumi.dagsterplus.UserAllBranchDeploymentsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var alice = new UserAllBranchDeploymentsGrant(\"alice\", UserAllBranchDeploymentsGrantArgs.builder()\n            .userId(aliceDagsterplusUser.id())\n            .grant(\"LAUNCHER\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  alice:\n    type: dagsterplus:UserAllBranchDeploymentsGrant\n    properties:\n      userId: ${aliceDagsterplusUser.id}\n      grant: LAUNCHER\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport an all-branch-deployments grant for a user using the user ID.\n\n```sh\n$ pulumi import dagsterplus:index/userAllBranchDeploymentsGrant:UserAllBranchDeploymentsGrant example \u003cuser_id\u003e\n```\n\n",
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user to grant access.\n"
+                }
+            },
+            "required": [
+                "userId"
+            ],
+            "inputProperties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user to grant access.\n"
+                }
+            },
+            "requiredInputs": [
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserAllBranchDeploymentsGrant resources.\n",
+                "properties": {
+                    "customRoleId": {
+                        "type": "string",
+                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    },
+                    "grant": {
+                        "type": "string",
+                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The ID of the user to grant access.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dagsterplus:index/userBranchDeploymentsGrant:UserBranchDeploymentsGrant": {
+            "description": "Manages a permission grant for a Dagster+ user across all branch deployments of a specific parent (full) deployment.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst aliceProdBranches = new dagsterplus.UserBranchDeploymentsGrant(\"alice_prod_branches\", {\n    userId: alice.id,\n    parentDeployment: \"prod\",\n    grant: \"EDITOR\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nalice_prod_branches = dagsterplus.UserBranchDeploymentsGrant(\"alice_prod_branches\",\n    user_id=alice[\"id\"],\n    parent_deployment=\"prod\",\n    grant=\"EDITOR\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var aliceProdBranches = new Dagsterplus.Index.UserBranchDeploymentsGrant(\"alice_prod_branches\", new()\n    {\n        UserId = alice.Id,\n        ParentDeployment = \"prod\",\n        Grant = \"EDITOR\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewUserBranchDeploymentsGrant(ctx, \"alice_prod_branches\", \u0026dagsterplus.UserBranchDeploymentsGrantArgs{\n\t\t\tUserId:           pulumi.Any(alice.Id),\n\t\t\tParentDeployment: pulumi.String(\"prod\"),\n\t\t\tGrant:            pulumi.String(\"EDITOR\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.UserBranchDeploymentsGrant;\nimport com.pulumi.dagsterplus.UserBranchDeploymentsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var aliceProdBranches = new UserBranchDeploymentsGrant(\"aliceProdBranches\", UserBranchDeploymentsGrantArgs.builder()\n            .userId(alice.id())\n            .parentDeployment(\"prod\")\n            .grant(\"EDITOR\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  aliceProdBranches:\n    type: dagsterplus:UserBranchDeploymentsGrant\n    name: alice_prod_branches\n    properties:\n      userId: ${alice.id}\n      parentDeployment: prod\n      grant: EDITOR\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport using {user_id}/{parent_deployment}.\n\n```sh\n$ pulumi import dagsterplus:index/userBranchDeploymentsGrant:UserBranchDeploymentsGrant example \u003cuser_id\u003e/\u003cparent_deployment_name\u003e\n```\n\n",
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "parentDeployment": {
+                    "type": "string",
+                    "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user to grant access.\n"
+                }
+            },
+            "required": [
+                "parentDeployment",
+                "userId"
+            ],
+            "inputProperties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "parentDeployment": {
+                    "type": "string",
+                    "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user to grant access.\n"
+                }
+            },
+            "requiredInputs": [
+                "parentDeployment",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserBranchDeploymentsGrant resources.\n",
+                "properties": {
+                    "customRoleId": {
+                        "type": "string",
+                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    },
+                    "grant": {
+                        "type": "string",
+                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    },
+                    "parentDeployment": {
+                        "type": "string",
+                        "description": "The name of the full (parent) deployment whose branch deployments this grant applies to.\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The ID of the user to grant access.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dagsterplus:index/userDeploymentGrant:UserDeploymentGrant": {
+            "description": "Manages a deployment-level permission grant for a Dagster+ user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst aliceProd = new dagsterplus.UserDeploymentGrant(\"alice_prod\", {\n    userId: alice.id,\n    deployment: \"prod\",\n    grant: \"EDITOR\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nalice_prod = dagsterplus.UserDeploymentGrant(\"alice_prod\",\n    user_id=alice[\"id\"],\n    deployment=\"prod\",\n    grant=\"EDITOR\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var aliceProd = new Dagsterplus.Index.UserDeploymentGrant(\"alice_prod\", new()\n    {\n        UserId = alice.Id,\n        Deployment = \"prod\",\n        Grant = \"EDITOR\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewUserDeploymentGrant(ctx, \"alice_prod\", \u0026dagsterplus.UserDeploymentGrantArgs{\n\t\t\tUserId:     pulumi.Any(alice.Id),\n\t\t\tDeployment: pulumi.String(\"prod\"),\n\t\t\tGrant:      pulumi.String(\"EDITOR\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.UserDeploymentGrant;\nimport com.pulumi.dagsterplus.UserDeploymentGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var aliceProd = new UserDeploymentGrant(\"aliceProd\", UserDeploymentGrantArgs.builder()\n            .userId(alice.id())\n            .deployment(\"prod\")\n            .grant(\"EDITOR\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  aliceProd:\n    type: dagsterplus:UserDeploymentGrant\n    name: alice_prod\n    properties:\n      userId: ${alice.id}\n      deployment: prod\n      grant: EDITOR\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport using {user_id}/{deployment}.\n\n```sh\n$ pulumi import dagsterplus:index/userDeploymentGrant:UserDeploymentGrant example \u003cuser_id\u003e/\u003cdeployment_name\u003e\n```\n\n",
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "deployment": {
+                    "type": "string",
+                    "description": "The name of the deployment to grant access to.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "locationGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/UserDeploymentGrantLocationGrant:UserDeploymentGrantLocationGrant"
+                    },
+                    "description": "Per-code-location permission overrides within this deployment.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user to grant access.\n"
+                }
+            },
+            "required": [
+                "deployment",
+                "userId"
+            ],
+            "inputProperties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "deployment": {
+                    "type": "string",
+                    "description": "The name of the deployment to grant access to.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                },
+                "locationGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/dagsterplus:index/UserDeploymentGrantLocationGrant:UserDeploymentGrantLocationGrant"
+                    },
+                    "description": "Per-code-location permission overrides within this deployment.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user to grant access.\n"
+                }
+            },
+            "requiredInputs": [
+                "deployment",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserDeploymentGrant resources.\n",
+                "properties": {
+                    "customRoleId": {
+                        "type": "string",
+                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    },
+                    "deployment": {
+                        "type": "string",
+                        "description": "The name of the deployment to grant access to.\n"
+                    },
+                    "grant": {
+                        "type": "string",
+                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    },
+                    "locationGrants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/dagsterplus:index/UserDeploymentGrantLocationGrant:UserDeploymentGrantLocationGrant"
+                        },
+                        "description": "Per-code-location permission overrides within this deployment.\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The ID of the user to grant access.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dagsterplus:index/userOrganizationGrant:UserOrganizationGrant": {
+            "description": "Manages an organization-level permission grant for a Dagster+ user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst alice = new dagsterplus.UserOrganizationGrant(\"alice\", {\n    userId: aliceDagsterplusUser.id,\n    grant: \"ADMIN\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nalice = dagsterplus.UserOrganizationGrant(\"alice\",\n    user_id=alice_dagsterplus_user[\"id\"],\n    grant=\"ADMIN\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var alice = new Dagsterplus.Index.UserOrganizationGrant(\"alice\", new()\n    {\n        UserId = aliceDagsterplusUser.Id,\n        Grant = \"ADMIN\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dagsterplus.NewUserOrganizationGrant(ctx, \"alice\", \u0026dagsterplus.UserOrganizationGrantArgs{\n\t\t\tUserId: pulumi.Any(aliceDagsterplusUser.Id),\n\t\t\tGrant:  pulumi.String(\"ADMIN\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.UserOrganizationGrant;\nimport com.pulumi.dagsterplus.UserOrganizationGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var alice = new UserOrganizationGrant(\"alice\", UserOrganizationGrantArgs.builder()\n            .userId(aliceDagsterplusUser.id())\n            .grant(\"ADMIN\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  alice:\n    type: dagsterplus:UserOrganizationGrant\n    properties:\n      userId: ${aliceDagsterplusUser.id}\n      grant: ADMIN\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport an organization-level grant for a user using the user ID.\n\n```sh\n$ pulumi import dagsterplus:index/userOrganizationGrant:UserOrganizationGrant example \u003cuser_id\u003e\n```\n\n",
+            "properties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user to grant access.\n"
+                }
+            },
+            "required": [
+                "userId"
+            ],
+            "inputProperties": {
+                "customRoleId": {
+                    "type": "string",
+                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                },
+                "grant": {
+                    "type": "string",
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user to grant access.\n"
+                }
+            },
+            "requiredInputs": [
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserOrganizationGrant resources.\n",
+                "properties": {
+                    "customRoleId": {
+                        "type": "string",
+                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    },
+                    "grant": {
+                        "type": "string",
+                        "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The ID of the user to grant access.\n"
                     }
                 },
                 "type": "object"
@@ -3433,7 +4658,7 @@
             }
         },
         "dagsterplus:index/getDeployment:getDeployment": {
-            "description": "Reads an existing Dagster+ deployment.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst prod = dagsterplus.getDeployment({\n    name: \"prod\",\n});\nexport const prodDeploymentId = prod.then(prod =\u003e prod.deploymentId);\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nprod = dagsterplus.get_deployment(name=\"prod\")\npulumi.export(\"prodDeploymentId\", prod.deployment_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = Dagsterplus.Index.GetDeployment.Invoke(new()\n    {\n        Name = \"prod\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"prodDeploymentId\"] = prod.Apply(getDeploymentResult =\u003e getDeploymentResult.DeploymentId),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := dagsterplus.GetDeployment(ctx, \u0026dagsterplus.LookupDeploymentArgs{\n\t\t\tName: \"prod\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"prodDeploymentId\", pulumi.Any(prod.DeploymentId))\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.DagsterplusFunctions;\nimport com.pulumi.dagsterplus.inputs.GetDeploymentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var prod = DagsterplusFunctions.getDeployment(GetDeploymentArgs.builder()\n            .name(\"prod\")\n            .build());\n\n        ctx.export(\"prodDeploymentId\", prod.deploymentId());\n    }\n}\n```\n```yaml\nvariables:\n  prod:\n    fn::invoke:\n      function: dagsterplus:getDeployment\n      arguments:\n        name: prod\noutputs:\n  prodDeploymentId: ${prod.deploymentId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Reads an existing Dagster+ deployment.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dagsterplus from \"@pulumi/dagsterplus\";\n\nconst prod = dagsterplus.getDeployment({\n    name: \"prod\",\n});\nexport const prodDeploymentId = prod.then(prod =\u003e prod.deploymentId);\n```\n```python\nimport pulumi\nimport pulumi_dagsterplus as dagsterplus\n\nprod = dagsterplus.get_deployment(name=\"prod\")\npulumi.export(\"prodDeploymentId\", prod.deployment_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Dagsterplus = Pulumi.Dagsterplus;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = Dagsterplus.Index.GetDeployment.Invoke(new()\n    {\n        Name = \"prod\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"prodDeploymentId\"] = prod.Apply(getDeploymentResult =\u003e getDeploymentResult.DeploymentId),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/dagster-io/pulumi-dagsterplus/sdk/go/dagsterplus\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := dagsterplus.GetDeployment(ctx, \u0026dagsterplus.LookupDeploymentArgs{\n\t\t\tName: \"prod\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"prodDeploymentId\", prod.DeploymentId)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dagsterplus.DagsterplusFunctions;\nimport com.pulumi.dagsterplus.inputs.GetDeploymentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var prod = DagsterplusFunctions.getDeployment(GetDeploymentArgs.builder()\n            .name(\"prod\")\n            .build());\n\n        ctx.export(\"prodDeploymentId\", prod.deploymentId());\n    }\n}\n```\n```yaml\nvariables:\n  prod:\n    fn::invoke:\n      function: dagsterplus:getDeployment\n      arguments:\n        name: prod\noutputs:\n  prodDeploymentId: ${prod.deploymentId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDeployment.\n",
                 "properties": {
@@ -3450,6 +4675,10 @@
             "outputs": {
                 "description": "A collection of values returned by getDeployment.\n",
                 "properties": {
+                    "deploymentId": {
+                        "description": "The numeric deployment ID as a decimal string.\n",
+                        "type": "string"
+                    },
                     "id": {
                         "description": "Deployment identifier (same as name).\n",
                         "type": "string"
@@ -3468,6 +4697,7 @@
                     }
                 },
                 "required": [
+                    "deploymentId",
                     "id",
                     "name",
                     "status",
