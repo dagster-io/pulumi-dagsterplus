@@ -321,11 +321,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 }
             },
             "type": "object"
@@ -334,11 +334,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "parentDeployment": {
                     "type": "string",
@@ -354,7 +354,7 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "deployment": {
                     "type": "string",
@@ -362,7 +362,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 }
             },
             "type": "object",
@@ -374,11 +374,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "Custom role ID for this location. Conflicts with grant.\n"
+                    "description": "Custom role ID for this location. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationName": {
                     "type": "string",
@@ -394,11 +394,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                 }
             },
             "type": "object"
@@ -407,11 +407,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 }
             },
             "type": "object"
@@ -420,11 +420,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "parentDeployment": {
                     "type": "string",
@@ -440,7 +440,7 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "deployment": {
                     "type": "string",
@@ -448,7 +448,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 }
             },
             "type": "object",
@@ -460,11 +460,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "Custom role ID for this location. Conflicts with grant.\n"
+                    "description": "Custom role ID for this location. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationName": {
                     "type": "string",
@@ -492,11 +492,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                 }
             },
             "type": "object"
@@ -505,11 +505,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 }
             },
             "type": "object"
@@ -518,11 +518,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "parentDeployment": {
                     "type": "string",
@@ -538,7 +538,7 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "deployment": {
                     "type": "string",
@@ -546,7 +546,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 }
             },
             "type": "object",
@@ -558,11 +558,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "Custom role ID for this location. Conflicts with grant.\n"
+                    "description": "Custom role ID for this location. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationName": {
                     "type": "string",
@@ -578,11 +578,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                 }
             },
             "type": "object"
@@ -3022,11 +3022,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "serviceUserId": {
                     "type": "string",
@@ -3039,11 +3039,11 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "serviceUserId": {
                     "type": "string",
@@ -3058,11 +3058,11 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                        "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                     },
                     "serviceUserId": {
                         "type": "string",
@@ -3077,11 +3077,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "parentDeployment": {
                     "type": "string",
@@ -3099,11 +3099,11 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "parentDeployment": {
                     "type": "string",
@@ -3123,11 +3123,11 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                        "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                     },
                     "parentDeployment": {
                         "type": "string",
@@ -3146,7 +3146,7 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "deployment": {
                     "type": "string",
@@ -3154,7 +3154,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationGrants": {
                     "type": "array",
@@ -3175,7 +3175,7 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "deployment": {
                     "type": "string",
@@ -3183,7 +3183,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationGrants": {
                     "type": "array",
@@ -3206,7 +3206,7 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "deployment": {
                         "type": "string",
@@ -3214,7 +3214,7 @@
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                        "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                     },
                     "locationGrants": {
                         "type": "array",
@@ -3236,11 +3236,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                 },
                 "serviceUserId": {
                     "type": "string",
@@ -3253,11 +3253,11 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                 },
                 "serviceUserId": {
                     "type": "string",
@@ -3272,11 +3272,11 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                        "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                     },
                     "serviceUserId": {
                         "type": "string",
@@ -3427,11 +3427,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "teamId": {
                     "type": "string",
@@ -3444,11 +3444,11 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "teamId": {
                     "type": "string",
@@ -3463,11 +3463,11 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                        "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                     },
                     "teamId": {
                         "type": "string",
@@ -3482,11 +3482,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "parentDeployment": {
                     "type": "string",
@@ -3504,11 +3504,11 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "parentDeployment": {
                     "type": "string",
@@ -3528,11 +3528,11 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                        "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                     },
                     "parentDeployment": {
                         "type": "string",
@@ -3551,7 +3551,7 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "deployment": {
                     "type": "string",
@@ -3559,7 +3559,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationGrants": {
                     "type": "array",
@@ -3580,7 +3580,7 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "deployment": {
                     "type": "string",
@@ -3588,7 +3588,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationGrants": {
                     "type": "array",
@@ -3611,7 +3611,7 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "deployment": {
                         "type": "string",
@@ -3619,7 +3619,7 @@
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                        "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                     },
                     "locationGrants": {
                         "type": "array",
@@ -3686,11 +3686,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                 },
                 "teamId": {
                     "type": "string",
@@ -3703,11 +3703,11 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                 },
                 "teamId": {
                     "type": "string",
@@ -3722,11 +3722,11 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                        "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                     },
                     "teamId": {
                         "type": "string",
@@ -3883,11 +3883,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "userId": {
                     "type": "string",
@@ -3900,11 +3900,11 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "userId": {
                     "type": "string",
@@ -3919,11 +3919,11 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                        "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                     },
                     "userId": {
                         "type": "string",
@@ -3938,11 +3938,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "parentDeployment": {
                     "type": "string",
@@ -3960,11 +3960,11 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "parentDeployment": {
                     "type": "string",
@@ -3984,11 +3984,11 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                        "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                     },
                     "parentDeployment": {
                         "type": "string",
@@ -4007,7 +4007,7 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "deployment": {
                     "type": "string",
@@ -4015,7 +4015,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationGrants": {
                     "type": "array",
@@ -4036,7 +4036,7 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "deployment": {
                     "type": "string",
@@ -4044,7 +4044,7 @@
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                    "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                 },
                 "locationGrants": {
                     "type": "array",
@@ -4067,7 +4067,7 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "deployment": {
                         "type": "string",
@@ -4075,7 +4075,7 @@
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Standard permission level. Conflicts with custom*role*id. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
+                        "description": "Standard permission level. Exactly one of grant or custom*role*id must be set. Valid values: `VIEWER`, `LAUNCHER`, `EDITOR`, `ADMIN`.\n"
                     },
                     "locationGrants": {
                         "type": "array",
@@ -4097,11 +4097,11 @@
             "properties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                 },
                 "userId": {
                     "type": "string",
@@ -4114,11 +4114,11 @@
             "inputProperties": {
                 "customRoleId": {
                     "type": "string",
-                    "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                    "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                 },
                 "grant": {
                     "type": "string",
-                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                    "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                 },
                 "userId": {
                     "type": "string",
@@ -4133,11 +4133,11 @@
                 "properties": {
                     "customRoleId": {
                         "type": "string",
-                        "description": "The ID of a custom role to assign. Conflicts with grant.\n"
+                        "description": "The ID of a custom role to assign. Exactly one of grant or custom*role*id must be set.\n"
                     },
                     "grant": {
                         "type": "string",
-                        "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Conflicts with custom*role*id. Valid values: `ADMIN`.\n"
+                        "description": "Organization-level permission. For any non-admin role use custom*role*id with an organization-scoped custom role. Exactly one of grant or custom*role*id must be set. Valid values: `ADMIN`.\n"
                     },
                     "userId": {
                         "type": "string",
