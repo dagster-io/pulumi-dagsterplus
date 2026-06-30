@@ -13,6 +13,7 @@ tfgen:
 
 schema: tfgen
 	./$(TFGEN) schema --out $(SCHEMA_OUT)
+	go run ./provider/cmd/strip-schema-languages $(SCHEMA_OUT)/schema.json
 
 provider: schema
 	go build -o $(PROVIDER) ./provider/cmd/pulumi-resource-$(PROVIDER_NAME)
