@@ -3,7 +3,7 @@ module github.com/dagster-io/pulumi-dagsterplus
 go 1.25.8
 
 require (
-	github.com/dagster-io/terraform-provider-dagsterplus v0.1.8
+	github.com/dagster-io/terraform-provider-dagsterplus v0.1.9
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.127.0
 	github.com/pulumi/pulumi/pkg/v3 v3.228.0
 	github.com/stretchr/testify v1.11.1
