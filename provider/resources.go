@@ -13,21 +13,23 @@ import (
 //go:embed cmd/pulumi-resource-dagsterplus/bridge-metadata.json
 var bridgeMetadata []byte
 
+var Version = "0.0.0"
+
 func Provider() tfbridge.ProviderInfo {
 	info := tfbridge.ProviderInfo{
-		P:                  pf.ShimProvider(dagsterprovider.New("0.0.0")()),
-		Name:               "dagsterplus",
-		Version:            "0.0.0",
-		DisplayName:        "Dagster+",
-		Publisher:          "Dagster",
-		Description:        "A Pulumi provider for managing Dagster+ resources.",
-		License:            "Apache-2.0",
-		Homepage:           "https://www.dagster.io",
-		Repository:         "https://github.com/dagster-io/pulumi-dagsterplus",
-		GitHubOrg:          "dagster-io",
-		PluginDownloadURL:  "github://api.github.com/dagster-io/pulumi-dagsterplus",
-		UpstreamRepoPath:   "/Users/dennis/code/terraform-provider-dagster-plus",
-		MetadataInfo:       tfbridge.NewProviderMetadata(bridgeMetadata),
+		P:                 pf.ShimProvider(dagsterprovider.New(Version)()),
+		Name:              "dagsterplus",
+		Version:           Version,
+		DisplayName:       "Dagster+",
+		Publisher:         "Dagster",
+		Description:       "A Pulumi provider for managing Dagster+ resources.",
+		License:           "Apache-2.0",
+		Homepage:          "https://www.dagster.io",
+		Repository:        "https://github.com/dagster-io/pulumi-dagsterplus",
+		GitHubOrg:         "dagster-io",
+		PluginDownloadURL: "github://api.github.com/dagster-io/pulumi-dagsterplus",
+		UpstreamRepoPath:  "/Users/dennis/code/terraform-provider-dagster-plus",
+		MetadataInfo:      tfbridge.NewProviderMetadata(bridgeMetadata),
 	}
 	info.MustComputeTokens(tokens.SingleModule(
 		"dagsterplus_", "index", tokens.MakeStandard("dagsterplus"),

@@ -1,0 +1,3 @@
+name: dagsterplus-basic-go
+runtime: go
+description: Basic smoke test for the dagsterplus Pulumi provider (Go)
