@@ -8,6 +8,14 @@ This provider is built on top of the [Dagster+ Terraform provider](https://githu
 
 This package is available in the following languages and packaging formats.
 
+### TypeScript / JavaScript
+
+To use from TypeScript or JavaScript, install using `npm`:
+
+```bash
+npm install @pulumi/dagsterplus
+```
+
 ### Python
 
 To use from Python, install using `pip`:

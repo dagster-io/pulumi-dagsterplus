@@ -3,7 +3,7 @@ TFGEN         := pulumi-tfgen-$(PROVIDER_NAME)
 PROVIDER      := pulumi-resource-$(PROVIDER_NAME)
 SCHEMA_OUT    := provider/cmd/pulumi-resource-$(PROVIDER_NAME)
 
-.PHONY: tidy tfgen schema provider install all
+.PHONY: tidy tfgen schema provider install sdk_nodejs all
 
 tidy:
 	go mod tidy
@@ -30,5 +30,8 @@ test_provider:
 
 test_examples: provider
 	cd examples && go test -v -timeout 60m ./...
+
+sdk_nodejs: tfgen
+	./$(TFGEN) nodejs --out sdk/nodejs
 
 all: tidy provider

@@ -4,6 +4,7 @@
 
 - [Go 1.24+](https://golang.org/dl/)
 - [Pulumi CLI](https://www.pulumi.com/docs/install/)
+- [Node.js 18+](https://nodejs.org/) and npm (for TypeScript SDK)
 - [Python 3.9+](https://www.python.org/downloads/) with [uv](https://docs.astral.sh/uv/) (for Python SDK work)
 
 ## Building
@@ -16,6 +17,19 @@ make install
 make tfgen      # Build the schema generator
 make schema     # Generate schema.json and bridge-metadata.json
 make provider   # Build the provider binary
+```
+
+## TypeScript SDK
+
+```bash
+# Generate the TypeScript SDK
+make sdk_nodejs
+
+# Install the generated SDK locally
+cd sdk/nodejs && npm install && npm run build
+
+# Test against the example
+cd examples/basic-typescript && npm install && pulumi preview
 ```
 
 ## Python SDK
@@ -61,6 +75,7 @@ pulumi-dagsterplus/
 │       └── pulumi-resource-dagsterplus/    # Provider runtime binary
 ├── examples/
 │   ├── basic/                              # Basic YAML example
+│   ├── basic-typescript/                   # Basic TypeScript example
 │   ├── basic-python/                       # Basic Python example
 │   └── examples_test.go                   # Integration tests
 ├── .goreleaser.yml                         # Cross-platform release config
@@ -72,7 +87,10 @@ pulumi-dagsterplus/
 Releases are automated via [goreleaser](https://goreleaser.com/) and GitHub Actions. Pushing a version tag triggers the release workflow, which:
 
 1. Builds cross-platform provider binaries and publishes them to GitHub Releases
-2. Generates the Python SDK, builds a wheel, and publishes it to PyPI
+2. Generates the TypeScript SDK and publishes it to npm
+3. Generates the Python SDK, builds a wheel, and publishes it to PyPI
+
+Before cutting a release, ensure `NPM_TOKEN` is configured as a GitHub Actions secret with publish access to the `@pulumi` npm scope, and `PYPI_TOKEN` is configured for PyPI publishing.
 
 ```bash
 git tag v0.1.0
