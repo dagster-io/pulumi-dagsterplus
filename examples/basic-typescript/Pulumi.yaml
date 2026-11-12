@@ -1,0 +1,3 @@
+name: dagsterplus-basic-typescript
+runtime: nodejs
+description: "Basic smoke test for the dagsterplus Pulumi provider (TypeScript)"

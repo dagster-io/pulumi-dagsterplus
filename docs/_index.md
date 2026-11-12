@@ -12,6 +12,7 @@ The Dagster+ provider for Pulumi can be used to provision and manage resources i
 
 The Dagster+ provider is available as a package in the following languages:
 
+* JavaScript/TypeScript: [`@pulumi/dagsterplus`](https://www.npmjs.com/package/@pulumi/dagsterplus)
 * Python: [`pulumi-dagsterplus`](https://pypi.org/project/pulumi-dagsterplus/)
 * YAML: Install the [Pulumi CLI](https://www.pulumi.com/docs/install/) and reference the provider directly in your YAML programs.
 
@@ -28,7 +29,20 @@ export DAGSTER_CLOUD_ORGANIZATION=your-org-name
 
 Or pass them explicitly in your Pulumi program:
 
-{{< chooser language "python,yaml" >}}
+{{< chooser language "typescript,python,yaml" >}}
+
+{{% choosable language typescript %}}
+
+```typescript
+import * as dagsterplus from "@pulumi/dagsterplus";
+
+const provider = new dagsterplus.Provider("dagsterplus", {
+    apiToken: "your-user-token",
+    organization: "your-org-name",
+});
+```
+
+{{% /choosable %}}
 
 {{% choosable language python %}}
 
@@ -62,7 +76,19 @@ resources:
 
 Create a Dagster+ team:
 
-{{< chooser language "python,yaml" >}}
+{{< chooser language "typescript,python,yaml" >}}
+
+{{% choosable language typescript %}}
+
+```typescript
+import * as dagsterplus from "@pulumi/dagsterplus";
+
+const team = new dagsterplus.Team("my-team", {
+    name: "platform-engineers",
+});
+```
+
+{{% /choosable %}}
 
 {{% choosable language python %}}
 
